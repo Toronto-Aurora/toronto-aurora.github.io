@@ -1,7 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
 import Hero from '../components/Hero.astro';
-import LogoLockup from '../components/LogoLockup.astro';
 import team from '../data/team.json';
 import collab from '../data/collaborators.json';
 import news from '../data/news.json';
@@ -70,7 +69,7 @@ const latest = news.items.slice(0, 4);
           <p>The Universe's first billion years hold some of its deepest open questions: the first stars and galaxies, the first black holes and their surprisingly rapid growth, and cosmic reionization. Aurora sets out to answer them by uniting the three complementary strengths that few places bring together the way Toronto does: <strong>observation, theory, and data science</strong>. It is one of the very few institutes built end to end around the early Universe.</p>
         </div>
         <div class="mission-brand">
-          <LogoLockup height={72} color="#1a2336" />
+          <img src="/aurora-logo-black.svg" alt="Aurora Institute" style="width:100%;max-width:440px;height:auto;display:block" />
           <div class="mb-sub" style="margin-top:14px;">University of Toronto &nbsp;·&nbsp; York University</div>
         </div>
       </div>
