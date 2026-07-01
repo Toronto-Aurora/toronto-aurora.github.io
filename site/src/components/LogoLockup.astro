@@ -1,9 +1,9 @@
 ---
-// Aurora Institute lockup — faithful recreation of the approved logo:
-//   - a bold FILLED gradient "A" (teal top -> blue -> purple bottom, with a counter)
-//   - a long, shallow aurora arch sweeping over the wordmark (purple -> teal, fading)
-//   - the CN Tower standing in for the "i" of Institute
-// Wordmark + tower use the `color` prop so the lockup works on dark and light.
+// Aurora Institute lockup — faithful to the approved artwork.
+// The "A" is NOT a full triangle: only its LEFT leg is drawn (a gradient wedge).
+// The RIGHT leg is the aurora arch itself, which rises from the right foot up to
+// the apex and then keeps sweeping over the wordmark before fading out. The CN
+// Tower stands in for the "i" of Institute. Wordmark + tower use `color`.
 interface Props { height?: number; color?: string; }
 const { height = 32, color = '#f4f7ff' } = Astro.props;
 const tx = 634; // CN Tower x, centered over the dotless "i" of Institute (measured, Poppins 500 @ x=205)
@@ -11,27 +11,28 @@ const tx = 634; // CN Tower x, centered over the dotless "i" of Institute (measu
 <svg viewBox="0 0 920 140" height={height} role="img" aria-label="Aurora Institute" style={`height:${height}px;width:auto;display:block`}>
   <title>Aurora Institute</title>
   <defs>
-    <linearGradient id="llA" gradientUnits="userSpaceOnUse" x1="92" y1="8" x2="92" y2="124">
+    <linearGradient id="llV" gradientUnits="userSpaceOnUse" x1="70" y1="10" x2="70" y2="122">
       <stop offset="0" stop-color="#3fc8a8" />
       <stop offset="0.5" stop-color="#5385e6" />
       <stop offset="1" stop-color="#8f74ee" />
     </linearGradient>
-    <linearGradient id="llArch" gradientUnits="userSpaceOnUse" x1="20" y1="0" x2="908" y2="0">
-      <stop offset="0" stop-color="#8f74ee" />
-      <stop offset="0.4" stop-color="#5385e6" />
-      <stop offset="0.72" stop-color="#3fc8a8" />
+    <linearGradient id="llSweep" gradientUnits="userSpaceOnUse" x1="76" y1="0" x2="906" y2="0">
+      <stop offset="0" stop-color="#45bfbe" />
+      <stop offset="0.5" stop-color="#3fc8a8" />
       <stop offset="1" stop-color="#3fc8a8" stop-opacity="0" />
     </linearGradient>
   </defs>
 
-  <!-- aurora arch -->
-  <path d="M20 78 C140 30 470 12 700 20 C815 24 880 44 908 66" fill="none"
-        stroke="url(#llArch)" stroke-width="4" stroke-linecap="round" />
-
-  <!-- filled A mark with counter -->
-  <path fill-rule="evenodd" fill="url(#llA)"
-        d="M48 124 L92 8 L136 124 L110 124 L103 100 L81 100 L74 124 Z
-           M92 40 L83 88 L101 88 Z" />
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <!-- right leg of the A = the arch rising from the right foot to the apex -->
+    <path d="M100 122 C90 74 78 40 76 12" stroke="url(#llV)" stroke-width="5.5" />
+    <!-- the same arch continues over the wordmark and fades out -->
+    <path d="M76 12 C150 3 280 2 430 12 C620 24 800 48 906 62" stroke="url(#llSweep)" stroke-width="4.5" />
+  </g>
+  <!-- left leg (bold gradient wedge) -->
+  <path fill="url(#llV)" d="M76 12 L28 122 L58 122 Z" />
+  <!-- crossbar bridging the left leg to the arch -->
+  <path fill="none" stroke="url(#llV)" stroke-width="6" stroke-linecap="round" d="M60 82 L90 82" />
 
   <!-- wordmark (dotless i so the tower stands in cleanly) -->
   <text x="205" y="100" font-family="'Poppins', Inter, sans-serif" font-size="74" font-weight="500" letter-spacing="1" fill={color}>Aurora Inst&#305;tute</text>
