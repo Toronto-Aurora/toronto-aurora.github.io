@@ -57,13 +57,14 @@ const theoryVideos = [
       <div class="eyebrow">University of Toronto &nbsp;·&nbsp; York University</div>
       <h1>The first billion years</h1>
       <p>Galaxies, black holes, and cosmic dawn, studied across observation, theory, and data science.</p>
-      <div class="hero-ctas">
-        <a class="btn-join" href="/programs#join">Join us</a>
-        <a class="btn-ghost" href="/programs#visitors">Visit Aurora</a>
-      </div>
     </div>
   </div>
+  <a class="hero-scroll" href="#hero-cta" aria-label="See how to join"><i class="ti ti-chevron-down"></i></a>
 </header>
+<div class="hero-cta-bar" id="hero-cta">
+  <a class="btn-join" href="/programs#join">Join us</a>
+  <a class="btn-ghost" href="/programs#visitors">Visit Aurora</a>
+</div>
 
 <script>
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -88,7 +89,7 @@ const theoryVideos = [
   const dotsEl = document.querySelector('.dots-canvas');
   if (dotsEl) {
     const ctx = dotsEl.getContext('2d');
-    let w, h, dpr, pts, pulses;
+    let w, h, dpr, pts, pulses, surge = 0;
     const mouse = { x: -9999, y: -9999 };
     const fit = () => {
       dpr = Math.min(window.devicePixelRatio || 1, 2);
@@ -113,8 +114,9 @@ const theoryVideos = [
     let frameN = 0;
     const frame = () => {
       frameN++;
+      if (surge > 0) surge = Math.max(0, surge - 0.0075);
       ctx.clearRect(0, 0, w, h);
-      const D = dd(), M = md();
+      const M = md(), D = dd() * (1 + surge * 0.85);
       const maxS = 0.42 * dpr, minS = 0.14 * dpr;
       for (const p of pts) {
         p.vx += (Math.random() - 0.5) * 0.02 * dpr;
@@ -133,7 +135,7 @@ const theoryVideos = [
           const near = Math.min(Math.hypot(p.x - mouse.x, p.y - mouse.y), Math.hypot(q.x - mouse.x, q.y - mouse.y));
           const thr = near < M ? D * 1.7 : D;
           if (dist < thr) {
-            const al = (1 - dist / thr) * (near < M ? 0.55 : 0.2);
+            const al = (1 - dist / thr) * (near < M ? 0.55 : 0.2) * (1 + surge * 1.5);
             ctx.strokeStyle = `rgba(125,180,235,${al})`; ctx.lineWidth = dpr;
             ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(q.x, q.y); ctx.stroke();
           }
@@ -175,6 +177,7 @@ const theoryVideos = [
       requestAnimationFrame(frame);
     };
     frame();
+    if (!reduce) { setTimeout(() => { surge = 1; }, 2100); setTimeout(() => { surge = Math.min(1, surge + 0.6); }, 3400); }
     window.addEventListener('resize', reset);
   }
 </script>
