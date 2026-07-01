@@ -1,22 +1,24 @@
 ---
-// Aurora Institute lockup — "Design 4": gradient A with an aurora arc sweeping
-// over the wordmark (no horizon glow). Aurora gradient (green -> blue -> purple).
+// Aurora Institute lockup — matches the approved "Design 4": gradient A, an aurora
+// arch sweeping over the wordmark (no horizon glow), and a CN Tower for the "i" in
+// Institute. Wordmark + tower use the `color` prop so it works on dark and light.
 interface Props { height?: number; color?: string; }
 const { height = 32, color = '#f4f7ff' } = Astro.props;
+const tx = 544; // CN Tower x, centered over the "i" of Institute (measured for Space Grotesk 74px @ x=138)
 ---
 <svg viewBox="0 0 860 140" height={height} role="img" aria-label="Aurora Institute" style={`height:${height}px;width:auto;display:block`}>
   <title>Aurora Institute</title>
   <defs>
-    <linearGradient id="llA" gradientUnits="userSpaceOnUse" x1="36" y1="120" x2="118" y2="24">
+    <linearGradient id="llA" gradientUnits="userSpaceOnUse" x1="88" y1="20" x2="34" y2="122">
       <stop offset="0" stop-color="#5be08a" />
       <stop offset="0.5" stop-color="#5b8def" />
       <stop offset="1" stop-color="#a78bfa" />
     </linearGradient>
     <linearGradient id="llArch" gradientUnits="userSpaceOnUse" x1="30" y1="0" x2="840" y2="0">
-      <stop offset="0" stop-color="#5be08a" />
-      <stop offset="0.34" stop-color="#5b8def" />
-      <stop offset="0.6" stop-color="#a78bfa" />
-      <stop offset="1" stop-color="#a78bfa" stop-opacity="0" />
+      <stop offset="0" stop-color="#8b7cf0" />
+      <stop offset="0.4" stop-color="#5b8def" />
+      <stop offset="0.72" stop-color="#2dd4a7" />
+      <stop offset="1" stop-color="#2dd4a7" stop-opacity="0" />
     </linearGradient>
   </defs>
   <g fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -25,4 +27,11 @@ const { height = 32, color = '#f4f7ff' } = Astro.props;
     <path d="M34 119 Q64 30 122 27 Q450 10 840 64" stroke="url(#llArch)" stroke-width="5" />
   </g>
   <text x="138" y="99" font-family="'Space Grotesk', Inter, sans-serif" font-size="74" font-weight="500" letter-spacing="0.5" fill={color}>Aurora Institute</text>
+  <g fill={color} stroke="none">
+    <path d={`M${tx - 1.7} 52 L${tx - 0.9} 30 L${tx + 0.9} 30 L${tx + 1.7} 52 Z`} />
+    <ellipse cx={tx} cy="31" rx="4.6" ry="2.4" />
+    <rect x={tx - 0.8} y="19" width="1.6" height="12" />
+    <ellipse cx={tx} cy="19" rx="2.3" ry="1.4" />
+    <path d={`M${tx - 0.7} 19 L${tx} 7 L${tx + 0.7} 19 Z`} />
+  </g>
 </svg>
