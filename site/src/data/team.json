@@ -46,7 +46,8 @@
         { "name": "Jose Maria Palencia", "affil": "DADDAA Fellow, U of T", "pillar": "observation", "focus": "Gravitational lensing of magnified stars at high redshift.", "link": "#", "photo": "/people/palencia.jpg" },
         { "name": "Saiyang Zhang", "affil": "CITA Fellow, U of T", "pillar": "theory", "focus": "Primordial black holes and dark matter in the early universe.", "link": "https://sylvanzsy.github.io/", "photo": "/people/szhang.jpg" },
         { "name": "Ava Polzin", "affil": "Dunlap Fellow, U of T", "pillar": "observation", "pillars": ["observation", "theory"], "focus": "Star formation and the baryon cycle in dwarf galaxies.", "link": "https://avapolzin.github.io/", "photo": "/people/polzin.jpg" },
-        { "name": "Chloe Cheng", "affil": "Research Excellence Fellow, U of T", "pillar": "observation", "focus": "Ultra-deep spectroscopy of elemental abundances in massive quiescent galaxies.", "link": "https://chloe-mt-cheng.github.io/", "photo": "/people/cheng.jpg" }
+        { "name": "Chloe Cheng", "affil": "Research Excellence Fellow, U of T", "pillar": "observation", "focus": "Ultra-deep spectroscopy of elemental abundances in massive quiescent galaxies.", "link": "https://chloe-mt-cheng.github.io/", "photo": "/people/cheng.jpg" },
+        { "name": "Jonah Gannon", "affil": "DADDAA Fellow, U of T", "pillar": "observation", "focus": "Ultra-diffuse galaxies and globular clusters as probes of dark matter.", "link": "https://gannonjs.github.io/", "photo": "/people/gannon.jpg" }
       ]
     }
   ]
