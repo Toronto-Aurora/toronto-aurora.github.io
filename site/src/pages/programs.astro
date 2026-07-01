@@ -1,62 +1,113 @@
 ---
 import Base from '../layouts/Base.astro';
 import fellowships from '../data/fellowships.json';
+
+const groups = [
+  {
+    kicker: 'Our activities',
+    title: 'Cross-institutional research life',
+    intro: 'Shared activities that bring the community together across DADDAA, Dunlap, CITA, and York.',
+    items: [
+      { id: 'meeting', icon: 'ti-users', cls: 'teal', title: 'Weekly cross-institutional group meeting', blurb: 'The regular heartbeat of the Aurora community.', body: 'A weekly meeting that brings together DADDAA, Dunlap, CITA, and York, with rotating presenters spanning observation, theory, and data science. It is the easiest way for new members and visitors to plug into the community.' },
+      { id: 'daa-colloq', icon: 'ti-presentation', cls: 'blue', title: 'DADDAA Colloquium', blurb: 'The department colloquium series at U of T.', body: 'The David A. Dunlap Department of Astronomy & Astrophysics colloquium: weekly talks by leading visitors from around the world, with Aurora members and visitors as regular speakers and attendees.', link: '' },
+      { id: 'cita-colloq', icon: 'ti-presentation', cls: 'violet', title: 'CITA Colloquium', blurb: 'CITA’s theoretical astrophysics series.', body: 'The Canadian Institute for Theoretical Astrophysics colloquium series, covering cosmology, galaxy formation, and theoretical astrophysics.', link: '' },
+    ],
+  },
+  {
+    kicker: 'For international researchers',
+    title: 'Visiting Aurora',
+    intro: 'Several routes let researchers from abroad spend focused time in Toronto and collaborate with Aurora.',
+    items: [
+      { id: 'dunlap-visitor', icon: 'ti-plane', cls: 'blue', title: 'Dunlap Visitor Program', blurb: 'Funded visits hosted by the Dunlap Institute.', body: 'The Dunlap Institute hosts visiting researchers for short and longer stays. Aurora members can co-host visitors through this program.', link: '' },
+      { id: 'cita-visitor', icon: 'ti-plane', cls: 'teal', title: 'CITA Visitor Program', blurb: 'Visiting positions in theoretical astrophysics.', body: 'CITA hosts visiting scientists and long-term visitors in theoretical astrophysics, a natural home for theory-focused collaborators.', link: '' },
+      { id: 'cita-mou', icon: 'ti-file-text', cls: 'violet', title: 'CITA Memorandum of Understanding', blurb: 'Partner-institution visitor exchange.', body: 'CITA maintains agreements (MoUs) with partner institutions that support visitor exchange, giving members established routes to bring in international collaborators.' },
+      { id: 'aurora-visitor', icon: 'ti-plane', cls: 'amber', title: 'Aurora Visitor Program', blurb: 'Aurora’s own funded visitor program.', badge: 'Coming soon', body: 'Aurora is preparing its own funded visitor program, planned in tiers: short senior-collaborator visits, a graduate summer program, and semester-style embedded postdoc visits (a pilot of two to three visitors per year, two to four weeks, with travel and accommodation supported, is planned pending Dunlap Blue-Sky funding). Terms and the application window will be announced.' },
+    ],
+  },
+  {
+    kicker: 'For early-career researchers',
+    title: 'Support, by design',
+    intro: 'Concrete support that makes Toronto competitive for the strongest students and postdocs.',
+    items: [
+      { id: 'extension', icon: 'ti-calendar-plus', cls: 'violet', title: 'Fellowship extension (+1 year)', blurb: 'A funded third year for eligible two-year fellowships.', special: 'fellowships', body: 'Many competitive fellowships run only two years. Aurora adds a funded third year to fellows who join, because building an independent research identity takes time, and to make Toronto competitive with longer offers elsewhere. Eligible awards include the U of T fellowships and the international programs below.' },
+      { id: 'co-mentorship', icon: 'ti-arrows-exchange', cls: 'teal', title: 'Co-mentorship', blurb: 'Two mentors from different pillars for every trainee.', body: 'Every Aurora trainee works with at least two mentors from different pillars. This is a genuine collaborative relationship, so dissertations and postdoctoral projects are cross-disciplinary by design. Postdocs mentor students directly, which is a feature of the model, not an afterthought.' },
+      { id: 'career', icon: 'ti-stairs-up', cls: 'amber', title: 'Career support', blurb: 'Dual mentoring, training, and placement.', body: 'Beyond research: dual mentoring, professional-development sessions tied to Dunlap activities, postdoc-led lectures, and an annual internal review where trainees present and get feedback. As cohorts graduate, placement outcomes are tracked and shown openly.' },
+    ],
+  },
+];
 ---
 <Base title="Programs — Aurora Institute">
   <section class="page-hero">
     <div class="wrap">
       <div class="kicker" style="color:#84e6ca;">Programs &amp; opportunities</div>
-      <h1>What Aurora offers early-career researchers</h1>
-      <p>Aurora exists to make Toronto a place where the strongest students and postdocs want to be. Here is what that means in practice.</p>
+      <h1>What Aurora brings together</h1>
+      <p>Shared activities, routes for visiting researchers, and concrete support for early-career people. Click any item for details.</p>
     </div>
   </section>
 
   <section class="section" style="padding-top:44px;">
-    <div class="wrap prose">
+    <div class="wrap">
+      {groups.map((g) => (
+        <div class="prog-group" id={g.kicker === 'For international researchers' ? 'visitors' : undefined}>
+          <div class="section-head" style="margin-bottom:0;">
+            <div class="kicker">{g.kicker}</div>
+            <h2>{g.title}</h2>
+            <p>{g.intro}</p>
+          </div>
+          <div class="acc-list">
+            {g.items.map((it) => (
+              <details class="acc" id={it.id}>
+                <summary class="acc-sum">
+                  <span class="acc-ic" style={`background:var(--pill-${it.cls}-bg);color:var(--pill-${it.cls}-fg)`}><i class={`ti ${it.icon}`}></i></span>
+                  <span class="acc-txt">
+                    <span class="acc-title">{it.title}{it.badge && (<span class="acc-badge">{it.badge}</span>)}</span>
+                    <span class="acc-blurb">{it.blurb}</span>
+                  </span>
+                  <i class="ti ti-chevron-down acc-chev"></i>
+                </summary>
+                <div class="acc-body">
+                  <p>{it.body}</p>
+                  {it.special === 'fellowships' && (
+                    <>
+                      <h4 class="acc-h">Eligible U of T fellowships</h4>
+                      <table class="ftable">
+                        <tbody>
+                          {fellowships.uoft.map((f) => (<tr><td>{f.name}</td><td>{f.region}</td><td><a href={f.url} target="_blank" rel="noopener">Details ↗</a></td></tr>))}
+                        </tbody>
+                      </table>
+                      <h4 class="acc-h">International fellowships you can bring to Toronto</h4>
+                      <table class="ftable">
+                        <tbody>
+                          {fellowships.international.map((f) => (<tr><td>{f.name}</td><td>{f.region}</td><td><a href={f.url} target="_blank" rel="noopener">Details ↗</a></td></tr>))}
+                        </tbody>
+                      </table>
+                    </>
+                  )}
+                  {it.link && (<a class="link-more" href={it.link} target="_blank" rel="noopener">Learn more <i class="ti ti-arrow-right"></i></a>)}
+                </div>
+              </details>
+            ))}
+          </div>
+        </div>
+      ))}
 
-      <h2 id="co-mentorship"><i class="ti ti-arrows-exchange" style="color:var(--teal)"></i> Co-mentorship</h2>
-      <p>Every Aurora trainee, graduate student or postdoctoral fellow, works with at least two mentors drawn from different pillars. This is not a committee. It is a genuine collaborative relationship in which the trainee's research lives at the intersection of the mentors' expertise, so that dissertations and postdoctoral projects are cross-disciplinary by design rather than by chance. Postdocs mentor students directly, and that is a feature of the model, not an afterthought.</p>
-
-      <h2 id="extension"><i class="ti ti-calendar-plus" style="color:var(--violet)"></i> Fellowship extension (+1 year)</h2>
-      <p>Many competitive postdoctoral fellowships run only two years. Aurora adds a funded third year to fellows who join the institute, because building an independent research identity takes time, and to make Toronto directly competitive with longer offers elsewhere.</p>
-      <div class="callout">
-        <strong>How it works.</strong> Hold an eligible two- or three-year fellowship, join Aurora under the co-mentorship model, and apply for a funded one-year extension. Eligible awards include the U of T fellowships and the international programs listed below.
+      <div class="prog-group" id="join">
+        <div class="section-head" style="margin-bottom:0;">
+          <div class="kicker">Join us</div>
+          <h2>Get in touch</h2>
+        </div>
+        <div class="callout" style="max-width:860px;">
+          <strong>Contact.</strong> If you are considering a postdoc or PhD on the first billion years, or hold (or are applying for) a fellowship you would bring to Toronto, email <a href="mailto:seiji.fujimoto@utoronto.ca">seiji.fujimoto@utoronto.ca</a> with a short note on your interests and which mentors or pillars you would want to work across. A shared address (info@aurorainstitute.ca) will replace this once the domain is set up.
+        </div>
       </div>
-
-      <h3>Eligible U of T fellowships</h3>
-      <table class="ftable">
-        <thead><tr><th>Fellowship</th><th>Where</th><th></th></tr></thead>
-        <tbody>
-          {fellowships.uoft.map((f) => (
-            <tr><td>{f.name}</td><td>{f.region}</td><td><a href={f.url} target="_blank" rel="noopener">Details ↗</a></td></tr>
-          ))}
-        </tbody>
-      </table>
-
-      <h3>International fellowships you can bring to Toronto</h3>
-      <table class="ftable">
-        <thead><tr><th>Fellowship</th><th>Country / region</th><th></th></tr></thead>
-        <tbody>
-          {fellowships.international.map((f) => (
-            <tr><td>{f.name}</td><td>{f.region}</td><td><a href={f.url} target="_blank" rel="noopener">Details ↗</a></td></tr>
-          ))}
-        </tbody>
-      </table>
-      <p style="font-size:13px; color:var(--ink-3);">This guide is maintained as opportunities change. Eligibility and citizenship rules vary by program, so check each official page.</p>
-
-      <h2 id="visitors"><i class="ti ti-plane" style="color:var(--blue)"></i> Visitor program</h2>
-      <p>Aurora runs funded short-term visits so collaborators and trainees can spend focused time in Toronto, give a talk or mini-symposium, and start a collaboration.</p>
-      <div class="callout">
-        <strong>Pilot terms (draft, pending Dunlap Blue-Sky funding).</strong> Two to three international visitors per year, stays of two to four weeks, with travel and local accommodation supported. The application window and how to apply will be announced.
-      </div>
-      <p>As funding grows, the program expands into tiers: short visits for senior collaborators, a longer summer program for graduate students, and semester-style embedded visits for postdocs. It builds on the existing Dunlap and CITA visitor activities and the CITA visitor agreement rather than duplicating them.</p>
-
-      <h2 id="career"><i class="ti ti-stairs-up" style="color:var(--pill-amber-fg)"></i> Career support</h2>
-      <p>Beyond research, Aurora supports the next step: dual mentoring, professional-development sessions tied to Dunlap's activities, postdoc-led lectures, and an internal annual review where trainees present and get feedback from the full faculty. As cohorts graduate, placement outcomes will be tracked and shown openly.</p>
-
-      <h2 id="join"><i class="ti ti-mail" style="color:var(--teal)"></i> Join us</h2>
-      <p>If you are considering a postdoc or PhD focused on the first billion years, or you hold (or are applying for) one of the fellowships above and want Toronto as your host, get in touch. Aurora is in its first phase, so this is a rare chance to help shape an institute from the ground up.</p>
-      <div class="callout"><strong>Contact.</strong> Email <a href="mailto:seiji.fujimoto@utoronto.ca">seiji.fujimoto@utoronto.ca</a> with a short note on your interests and which mentors or pillars you would want to work across. A shared address (info@aurorainstitute.ca) will replace this once the domain is set up.</div>
     </div>
   </section>
+
+  <script>
+    const h = decodeURIComponent(location.hash.slice(1));
+    if (h) {
+      const el = document.getElementById(h);
+      if (el && el.tagName === 'DETAILS') { el.open = true; setTimeout(() => el.scrollIntoView({ block: 'center' }), 40); }
+    }
+  </script>
 </Base>

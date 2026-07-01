@@ -219,7 +219,28 @@ img { max-width: 100%; display: block; }
 .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 9px; }
 .tag { display: inline-block; font-size: 11px; font-weight: 600; padding: 2px 9px; border-radius: 20px; }
 
-/* ---------- programs ---------- */
+/* ---------- programs (accordion cards) ---------- */
+.prog-group { margin-top: 48px; }
+.prog-group:first-of-type { margin-top: 0; }
+.acc-list { display: flex; flex-direction: column; gap: 12px; margin-top: 22px; max-width: 880px; }
+.acc { background: var(--card); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; transition: box-shadow .15s; }
+.acc:hover { box-shadow: 0 6px 18px rgba(20, 33, 73, .07); }
+.acc-sum { display: flex; align-items: center; gap: 16px; padding: 18px 20px; cursor: pointer; list-style: none; }
+.acc-sum::-webkit-details-marker { display: none; }
+.acc-ic { flex: 0 0 auto; width: 44px; height: 44px; border-radius: 11px; display: flex; align-items: center; justify-content: center; font-size: 22px; }
+.acc-txt { flex: 1 1 auto; min-width: 0; }
+.acc-title { font-family: var(--font-head); font-weight: 600; font-size: 16px; color: var(--ink); display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.acc-blurb { display: block; color: var(--ink-2); font-size: 13.5px; margin-top: 3px; }
+.acc-badge { font-size: 11px; font-weight: 600; color: var(--pill-amber-fg); background: var(--pill-amber-bg); padding: 2px 9px; border-radius: 20px; }
+.acc-chev { flex: 0 0 auto; color: var(--ink-3); font-size: 18px; transition: transform .2s; }
+.acc[open] .acc-chev { transform: rotate(180deg); }
+.acc-body { padding: 2px 22px 20px 80px; }
+.acc-body p { color: var(--ink-2); font-size: 15px; line-height: 1.6; }
+.acc-body .acc-h { font-family: var(--font-head); font-size: 14px; font-weight: 600; color: var(--ink); margin: 20px 0 0; }
+.acc-body .link-more { margin-top: 14px; }
+@media (max-width: 680px) { .acc-body { padding-left: 22px; } }
+
+/* ---------- prose ---------- */
 .prose { max-width: 760px; }
 .prose h2 { font-size: 26px; margin: 48px 0 0; }
 .prose h3 { font-size: 18px; margin: 26px 0 0; }
