@@ -1,14 +1,8 @@
 name: Deploy Aurora site to GitHub Pages
 
 on:
-  # Auto-deploy is OFF while the site is private / not yet public.
-  # To turn it on later:
-  #   1. Make the repo public (GitHub Pages is free for public repos), or use a paid plan for private Pages.
-  #   2. Repo Settings > Pages > Build and deployment > Source: "GitHub Actions".
-  #   3. Uncomment the `push` trigger below (and set site/base in site/astro.config.mjs
-  #      if deploying to a project sub-path like username.github.io/aurora-website/).
-  # push:
-  #   branches: [main]
+  push:
+    branches: [main]
   workflow_dispatch:
 
 permissions:
