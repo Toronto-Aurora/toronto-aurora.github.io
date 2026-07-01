@@ -1,20 +1,21 @@
 ---
 import Base from '../layouts/Base.astro';
 import Hero from '../components/Hero.astro';
+import Logo from '../components/Logo.astro';
 import team from '../data/team.json';
 import collab from '../data/collaborators.json';
 import news from '../data/news.json';
 import world from '../data/world.geo.json';
 
-const questions = [
-  { lead: 'Observation', pillar: 'observation', cls: 'teal', q: 'How did the first galaxies form and assemble?', d: 'JWST populations at z > 10 sit in tension with models of early star formation and feedback.' },
-  { lead: 'Theory', pillar: 'theory', cls: 'violet', q: 'How did supermassive black holes grow so fast?', d: 'Luminous AGN at z > 7 imply massive seeds within a few hundred million years of the Big Bang.' },
-  { lead: 'Data science', pillar: 'data', cls: 'blue', q: 'How did reionization proceed, and what drove it?', d: 'Source properties and IGM topology, jointly inferred from heterogeneous multi-survey data.' },
+const mysteries = [
+  { z: 'z ≳ 10', cls: 'teal', motif: 'galaxy', title: 'First stars & galaxies', d: 'The earliest luminous objects, revealed by JWST at z > 10, defy models of how stars and galaxies first formed and grew.' },
+  { z: 'z ≳ 7', cls: 'violet', motif: 'bh', title: 'First black holes', d: 'Supermassive black holes appear within a few hundred million years of the Big Bang, demanding new theories of seeding and rapid growth.' },
+  { z: 'z ≈ 6–10', cls: 'blue', motif: 'reion', title: 'Cosmic reionization', d: 'Radiation from the first sources reionized the intergalactic medium, but its timing, topology, and drivers remain open.' },
 ];
 const motif = {
-  observation: '<svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="3"><circle cx="50" cy="50" r="34"/><circle cx="50" cy="50" r="22"/><circle cx="50" cy="50" r="10"/><path d="M50 6V22M50 78V94M6 50H22M78 50H94M20 20L31 31M80 20L69 31M20 80L31 69M80 80L69 69"/></svg>',
-  theory: '<svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="3"><circle cx="50" cy="50" r="6" fill="currentColor" stroke="none"/><ellipse cx="50" cy="50" rx="40" ry="15"/><ellipse cx="50" cy="50" rx="40" ry="15" transform="rotate(60 50 50)"/><ellipse cx="50" cy="50" rx="40" ry="15" transform="rotate(120 50 50)"/></svg>',
-  data: '<svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="20" y1="30" x2="50" y2="20"/><line x1="50" y1="20" x2="80" y2="38"/><line x1="20" y1="30" x2="35" y2="62"/><line x1="35" y1="62" x2="65" y2="72"/><line x1="65" y1="72" x2="80" y2="38"/><line x1="50" y1="20" x2="35" y2="62"/><line x1="65" y1="72" x2="82" y2="80"/><g fill="currentColor" stroke="none"><circle cx="20" cy="30" r="5"/><circle cx="50" cy="20" r="5"/><circle cx="80" cy="38" r="5"/><circle cx="35" cy="62" r="5"/><circle cx="65" cy="72" r="5"/><circle cx="82" cy="80" r="4"/></g></svg>',
+  galaxy: '<svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2.6"><ellipse cx="50" cy="52" rx="34" ry="15" transform="rotate(24 50 52)"/><ellipse cx="50" cy="52" rx="20" ry="8.5" transform="rotate(24 50 52)"/><circle cx="50" cy="52" r="4.5" fill="currentColor" stroke="none"/><path d="M22 12 L23.6 16.2 L27.8 17.8 L23.6 19.4 L22 23.6 L20.4 19.4 L16.2 17.8 L20.4 16.2 Z" fill="currentColor" stroke="none"/></svg>',
+  bh: '<svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2.6"><ellipse cx="50" cy="52" rx="36" ry="12" transform="rotate(-16 50 52)"/><ellipse cx="50" cy="52" rx="29" ry="9" transform="rotate(-16 50 52)" opacity="0.55"/><circle cx="50" cy="52" r="13" fill="currentColor" stroke="none"/></svg>',
+  reion: '<svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2.6"><circle cx="40" cy="46" r="19"/><circle cx="63" cy="40" r="13"/><circle cx="58" cy="66" r="16"/><circle cx="30" cy="68" r="9"/></svg>',
 };
 
 const coordinators = team.tiers.find((t) => t.id === 'coordinators').members;
@@ -62,19 +63,25 @@ const latest = news.items.slice(0, 4);
   <!-- OUR SCIENCE -->
   <section class="section" id="science">
     <div class="wrap">
-      <div class="section-head">
-        <div class="kicker">Our science</div>
-        <h2>Three connected questions about the first billion years</h2>
-        <p>The galaxies that built up stellar mass are the same objects whose radiation drove reionization, and the black holes that grew alongside them shaped their hosts. Answering these together needs all three pillars.</p>
+      <div class="mission-head">
+        <div class="section-head" style="margin-bottom:0;">
+          <div class="kicker">Our mission</div>
+          <h2>Solving the great mysteries of the first billion years</h2>
+          <p>The Universe's first billion years hold some of its deepest open questions: the first stars and galaxies, the first black holes and their surprisingly rapid growth, and cosmic reionization. Aurora sets out to answer them by uniting the three complementary strengths that few places bring together the way Toronto does: observation, theory, and data science. It is one of the very few institutes built end to end around the early Universe.</p>
+        </div>
+        <div class="mission-brand">
+          <Logo size={96} />
+          <div class="mb-name">Aurora Institute</div>
+          <div class="mb-sub">University of Toronto &nbsp;·&nbsp; York University</div>
+        </div>
       </div>
       <div class="three">
-        {questions.map((q) => (
+        {mysteries.map((m) => (
           <article class="qcard">
-            <div class="q-motif" style={`color:var(--pill-${q.cls}-fg)`} set:html={motif[q.pillar]}></div>
+            <div class="q-motif" style={`color:var(--pill-${m.cls}-fg)`} set:html={motif[m.motif]}></div>
             <div class="q-inner">
-              <div class="lead" style={`color:var(--pill-${q.cls}-fg)`}>{q.lead} lead</div>
-              <h3>{q.q}</h3>
-              <p>{q.d}</p>
+              <h3>{m.title}</h3>
+              <p>{m.d}</p>
             </div>
           </article>
         ))}

@@ -16,7 +16,6 @@ const items = [...news.items].sort((a, b) => (a.date < b.date ? 1 : -1));
 
   <section class="section" style="padding-top:40px;">
     <div class="wrap" style="max-width:760px;">
-      <div class="draft-note"><i class="ti ti-info-circle"></i> Seeded with recent, verified member preprints. The team will add institute news (fellow arrivals, talks, awards) as Aurora launches.</div>
       <div style="margin-top:24px;">
         {items.map((n) => (
           <a class="news-item" href={n.url} target="_blank" rel="noopener">
