@@ -4,7 +4,7 @@
     {
       "id": "coordinators",
       "title": "Coordinators",
-      "blurb": "The core leadership group spanning both institutions and all three pillars. Coordinators are also faculty.",
+      "blurb": "One coordinator from each of DADDAA, CITA, York, and Statistical Sciences, so Aurora is cross-institutional by design across both universities and all three pillars. Coordinators are also faculty.",
       "members": [
         { "name": "Seiji Fujimoto", "affil": "Astronomy & Astrophysics, U of T", "pillar": "observation", "focus": "Multi-wavelength observations of the first galaxies, black holes, and stars.", "link": "https://sfseiji.github.io/", "photo": "/people/fujimoto.jpg" },
         { "name": "Pratika Dayal", "affil": "CITA & Astronomy, U of T", "pillar": "theory", "focus": "Models early galaxy formation, reionization, and dark matter with simulations.", "link": "https://pratika24.wixsite.com/pratika-dayal", "photo": "/people/dayal.jpg" },
