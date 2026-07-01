@@ -1,0 +1,9 @@
+{
+  "note": "Seeded with recent, verified preprints from members (arXiv links checked). The team will add institute news (fellow arrivals, talks, awards) as Aurora launches.",
+  "items": [
+    { "date": "2026-03", "text": "New preprint (T. Li and collaborators): the kinematically hot, extremely metal-poor C-19 stellar stream in DESI DR2.", "url": "https://arxiv.org/abs/2603.11171" },
+    { "date": "2026-02", "text": "New preprint (A. Levis): dynamic black-hole emission tomography with physics-informed neural fields.", "url": "https://arxiv.org/abs/2602.08029" },
+    { "date": "2025-02", "text": "New preprint (P. Dayal): synergising semi-analytical models and hydrodynamical simulations to interpret JWST data from the first billion years.", "url": "https://arxiv.org/abs/2502.02647" },
+    { "date": "2025-01", "text": "New preprint (S. Fujimoto): GLIMPSE, an ultra-faint Pop III galaxy candidate and first constraints on the Pop III UV luminosity function at z ≈ 6–7.", "url": "https://arxiv.org/abs/2501.11678" }
+  ]
+}

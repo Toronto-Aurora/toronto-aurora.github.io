@@ -1,0 +1,19 @@
+{
+  "note": "Draft network based on members' current international collaborations. Cities only (no individuals) for now; the team will curate the real partner list before launch.",
+  "points": [
+    { "city": "Toronto", "lat": 43.66, "lon": -79.40, "hub": true },
+    { "city": "Baltimore", "lat": 39.29, "lon": -76.61 },
+    { "city": "Tucson", "lat": 32.22, "lon": -110.97 },
+    { "city": "Austin", "lat": 30.27, "lon": -97.74 },
+    { "city": "Pasadena", "lat": 34.15, "lon": -118.14 },
+    { "city": "Cambridge (US)", "lat": 42.37, "lon": -71.11 },
+    { "city": "Copenhagen", "lat": 55.68, "lon": 12.57 },
+    { "city": "Geneva", "lat": 46.20, "lon": 6.14 },
+    { "city": "Garching", "lat": 48.25, "lon": 11.65 },
+    { "city": "Marseille", "lat": 43.30, "lon": 5.37 },
+    { "city": "Tokyo", "lat": 35.68, "lon": 139.69 },
+    { "city": "Taipei", "lat": 25.03, "lon": 121.57 },
+    { "city": "Concepción", "lat": -36.83, "lon": -73.05 },
+    { "city": "Melbourne", "lat": -37.81, "lon": 144.96 }
+  ]
+}

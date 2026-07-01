@@ -1,0 +1,179 @@
+---
+const obsImages = [
+  { src: '/hero/obs/spt2325.jpg', credit: 'JWST VENUS team' },
+  { src: '/hero/obs/mothra-render.jpg', credit: 'MOTHRA · Dragonfly FRO' },
+  { src: '/hero/obs/carina.jpg', credit: 'JWST · STScI' },
+  { src: '/hero/obs/jwst-mirror.jpg', credit: 'JWST · NASA' },
+  { src: '/hero/obs/pillars.jpg', credit: 'JWST · STScI' },
+  { src: '/hero/obs/alma-array.jpg', credit: 'ALMA · ESO' },
+  { src: '/hero/obs/quintet.jpg', credit: 'JWST · STScI' },
+  { src: '/hero/obs/mothra-photo.jpg', credit: 'MOTHRA · R. Abraham' },
+  { src: '/hero/obs/alma-hltau.jpg', credit: 'ALMA · ESO' },
+];
+const theoryVideos = [
+  { src: '/hero/theory/reion.mp4', credit: 'THESAN' },
+  { src: '/hero/theory/galaxy.mp4', credit: 'THESAN-ZOOM' },
+];
+---
+<header class="hero3" id="top">
+  <div class="hpanel hpanel-obs" data-obs>
+    <div class="obs-stack">
+      {obsImages.map((im, i) => (
+        <img class={`obs-img${i === 0 ? ' is-active' : ''}`} src={im.src} alt="" loading={i === 0 ? 'eager' : 'lazy'} data-credit={im.credit} />
+      ))}
+    </div>
+    <div class="hpanel-grad"></div>
+    <div class="hpanel-credit" data-obs-credit>{obsImages[0].credit}</div>
+    <div class="hpanel-label">
+      <span class="pl-title"><i class="ti ti-eye" style="color:#7df3d0"></i> Observation</span>
+      <span class="pl-sub">Exploring the distant Universe with world-leading telescopes</span>
+    </div>
+  </div>
+
+  <div class="hpanel hpanel-data" data-data>
+    <canvas class="hcanvas dots-canvas"></canvas>
+    <div class="hpanel-grad"></div>
+    <div class="hpanel-label">
+      <span class="pl-title"><i class="ti ti-chart-dots" style="color:#8fc0ff"></i> Data science</span>
+      <span class="pl-sub">Connecting signals into new insight</span>
+    </div>
+  </div>
+
+  <div class="hpanel hpanel-theory" data-theory>
+    {theoryVideos.map((v, i) => (
+      <video class={`hvid${i === 0 ? ' is-active' : ''}`} src={v.src} data-credit={v.credit} autoplay muted loop playsinline preload="auto"></video>
+    ))}
+    <div class="hpanel-grad"></div>
+    <div class="hpanel-credit" data-theory-credit>{theoryVideos[0].credit}</div>
+    <div class="hpanel-label">
+      <span class="pl-title"><i class="ti ti-atom" style="color:#b6a6ff"></i> Theory</span>
+      <span class="pl-sub">Computing the early Universe and its reionization</span>
+    </div>
+  </div>
+
+  <div class="hero-overlay">
+    <div class="hero-overlay-inner">
+      <div class="eyebrow">University of Toronto &nbsp;·&nbsp; York University</div>
+      <h1>The first billion years</h1>
+      <p>Galaxies, black holes, and cosmic dawn, studied across observation, theory, and data science.</p>
+      <div class="hero-ctas">
+        <a class="btn-join" href="/programs#join">Join us</a>
+        <a class="btn-ghost" href="/programs#visitors">Visit Aurora</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<script>
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function crossfade(items, creditEl, ms) {
+    if (!items.length) return;
+    let i = 0;
+    const show = (k) => {
+      items.forEach((el, idx) => {
+        el.classList.toggle('is-active', idx === k);
+        if (el.tagName === 'VIDEO' && idx === k && el.play) el.play().catch(() => {});
+      });
+      if (creditEl && items[k].dataset.credit) creditEl.textContent = items[k].dataset.credit;
+    };
+    show(0);
+    if (items.length > 1 && !reduce) setInterval(() => { i = (i + 1) % items.length; show(i); }, ms);
+  }
+
+  crossfade(Array.from(document.querySelectorAll('[data-obs] .obs-img')), document.querySelector('[data-obs-credit]'), 4800);
+  crossfade(Array.from(document.querySelectorAll('[data-theory] .hvid')), document.querySelector('[data-theory-credit]'), 18000);
+
+  const dotsEl = document.querySelector('.dots-canvas');
+  if (dotsEl) {
+    const ctx = dotsEl.getContext('2d');
+    let w, h, dpr, pts, pulses;
+    const mouse = { x: -9999, y: -9999 };
+    const fit = () => {
+      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      const r = dotsEl.getBoundingClientRect();
+      dotsEl.width = Math.max(1, Math.round(r.width * dpr));
+      dotsEl.height = Math.max(1, Math.round(r.height * dpr));
+    };
+    const reset = () => {
+      fit(); w = dotsEl.width; h = dotsEl.height; pulses = [];
+      const n = Math.max(44, Math.min(120, Math.round((w * h) / (10000 * dpr))));
+      pts = Array.from({ length: n }, () => ({ x: Math.random() * w, y: Math.random() * h,
+        vx: (Math.random() - 0.5) * 0.2 * dpr, vy: (Math.random() - 0.5) * 0.2 * dpr }));
+    };
+    reset();
+    dotsEl.addEventListener('mousemove', (e) => {
+      const r = dotsEl.getBoundingClientRect();
+      mouse.x = (e.clientX - r.left) * dpr; mouse.y = (e.clientY - r.top) * dpr;
+    });
+    dotsEl.addEventListener('mouseleave', () => { mouse.x = mouse.y = -9999; });
+
+    const dd = () => 116 * dpr, md = () => 175 * dpr, maxSp = () => 0.55 * dpr;
+    let frameN = 0;
+    const frame = () => {
+      frameN++;
+      ctx.clearRect(0, 0, w, h);
+      const D = dd(), M = md();
+      const maxS = 0.42 * dpr, minS = 0.14 * dpr;
+      for (const p of pts) {
+        p.vx += (Math.random() - 0.5) * 0.02 * dpr;
+        p.vy += (Math.random() - 0.5) * 0.02 * dpr;
+        let sp = Math.hypot(p.vx, p.vy) || 0.0001;
+        if (sp > maxS) { p.vx = p.vx / sp * maxS; p.vy = p.vy / sp * maxS; }
+        else if (sp < minS) { p.vx = p.vx / sp * minS; p.vy = p.vy / sp * minS; }
+        p.x += p.vx; p.y += p.vy;
+        if (p.x < 2) { p.x = 2; p.vx = Math.abs(p.vx); } else if (p.x > w - 2) { p.x = w - 2; p.vx = -Math.abs(p.vx); }
+        if (p.y < 2) { p.y = 2; p.vy = Math.abs(p.vy); } else if (p.y > h - 2) { p.y = h - 2; p.vy = -Math.abs(p.vy); }
+      }
+      for (let a = 0; a < pts.length; a++) {
+        for (let b = a + 1; b < pts.length; b++) {
+          const p = pts[a], q = pts[b];
+          const dist = Math.hypot(p.x - q.x, p.y - q.y);
+          const near = Math.min(Math.hypot(p.x - mouse.x, p.y - mouse.y), Math.hypot(q.x - mouse.x, q.y - mouse.y));
+          const thr = near < M ? D * 1.7 : D;
+          if (dist < thr) {
+            const al = (1 - dist / thr) * (near < M ? 0.55 : 0.2);
+            ctx.strokeStyle = `rgba(125,180,235,${al})`; ctx.lineWidth = dpr;
+            ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(q.x, q.y); ctx.stroke();
+          }
+        }
+      }
+      if (!reduce && frameN % 26 === 0 && pulses.length < 7) {
+        const a = (Math.random() * pts.length) | 0;
+        let best = -1, bd = D * 1.4;
+        for (let b = 0; b < pts.length; b++) {
+          if (b === a) continue;
+          const d = Math.hypot(pts[a].x - pts[b].x, pts[a].y - pts[b].y);
+          if (d < bd) { bd = d; best = b; }
+        }
+        if (best >= 0) pulses.push({ a, b: best, u: 0, sp: 0.02 + Math.random() * 0.02 });
+      }
+      for (let i = pulses.length - 1; i >= 0; i--) {
+        const pu = pulses[i]; pu.u += pu.sp;
+        if (pu.u >= 1) { pulses.splice(i, 1); continue; }
+        const A = pts[pu.a], B = pts[pu.b];
+        const x = A.x + (B.x - A.x) * pu.u, y = A.y + (B.y - A.y) * pu.u;
+        ctx.beginPath(); ctx.arc(x, y, 2.3 * dpr, 0, 6.2832); ctx.fillStyle = 'rgba(120,240,210,0.95)'; ctx.fill();
+      }
+      if (mouse.x > -9000) {
+        for (const p of pts) {
+          const dist = Math.hypot(p.x - mouse.x, p.y - mouse.y);
+          if (dist < M) {
+            const al = (1 - dist / M) * 0.75;
+            ctx.strokeStyle = `rgba(90,212,167,${al})`; ctx.lineWidth = 1.1 * dpr;
+            ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(mouse.x, mouse.y); ctx.stroke();
+          }
+        }
+        ctx.fillStyle = 'rgba(150,235,255,0.9)';
+        ctx.beginPath(); ctx.arc(mouse.x, mouse.y, 2.6 * dpr, 0, 6.2832); ctx.fill();
+      }
+      for (const p of pts) {
+        ctx.fillStyle = 'rgba(190,210,240,0.85)';
+        ctx.beginPath(); ctx.arc(p.x, p.y, 1.7 * dpr, 0, 6.2832); ctx.fill();
+      }
+      requestAnimationFrame(frame);
+    };
+    frame();
+    window.addEventListener('resize', reset);
+  }
+</script>

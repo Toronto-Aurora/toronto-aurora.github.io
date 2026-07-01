@@ -1,0 +1,29 @@
+---
+import Logo from './Logo.astro';
+---
+<nav class="nav">
+  <div class="wrap">
+    <a class="nav-brand" href="/" aria-label="Aurora Institute home">
+      <Logo size={26} />
+      <span>Aurora Institute</span>
+    </a>
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false" data-nav-toggle>
+      <i class="ti ti-menu-2"></i>
+    </button>
+    <div class="nav-links" data-nav-links>
+      <a href="/#science">Science</a>
+      <a href="/people">People</a>
+      <a href="/programs">Programs</a>
+      <a href="/news">News</a>
+      <a class="btn-join" href="/programs#join">Join us</a>
+    </div>
+  </div>
+</nav>
+<script>
+  const toggle = document.querySelector('[data-nav-toggle]');
+  const links = document.querySelector('[data-nav-links]');
+  toggle?.addEventListener('click', () => {
+    const open = links?.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', String(!!open));
+  });
+</script>

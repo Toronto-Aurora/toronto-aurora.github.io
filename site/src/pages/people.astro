@@ -1,0 +1,70 @@
+---
+import Base from '../layouts/Base.astro';
+import team from '../data/team.json';
+
+const pillarMeta = {
+  observation: { label: 'Observation', cls: 'teal' },
+  theory: { label: 'Theory', cls: 'violet' },
+  data: { label: 'Data science', cls: 'blue' },
+  local: { label: 'Local universe', cls: 'amber' },
+  instrumentation: { label: 'Instrumentation', cls: 'teal' },
+};
+const initials = (name) => name.split(/\s+/).filter(Boolean).slice(0, 2).map((w) => w[0]).join('').toUpperCase();
+---
+<Base title="People — Aurora Institute">
+  <section class="page-hero">
+    <div class="wrap">
+      <div class="kicker" style="color:#84e6ca;">People</div>
+      <h1>A cross-institutional team</h1>
+      <p>Coordinators, faculty, and postdoctoral fellows across the University of Toronto and York University, spanning observation, theory, and data science.</p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:40px;">
+    <div class="wrap">
+      <div class="draft-note"><i class="ti ti-info-circle"></i> Draft. Affiliations and one-line foci are verified from official pages; headshots are hosted locally (please confirm consent with each member before launch).</div>
+
+      {team.tiers.map((tier) => (
+        <div class="tier" id={tier.id}>
+          <h2>{tier.title}</h2>
+          <p>{tier.blurb}</p>
+          <div class="people-grid">
+            {tier.members.map((m) => {
+              const tags = (m.pillars && m.pillars.length) ? m.pillars : (m.pillar ? [m.pillar] : []);
+              const avCls = (pillarMeta[m.pillar] || pillarMeta[tags[0]] || { cls: 'teal' }).cls;
+              const hasLink = m.link && m.link !== '#';
+              const Tag = hasLink ? 'a' : 'div';
+              const linkProps = hasLink ? { href: m.link, target: '_blank', rel: 'noopener' } : {};
+              return (
+                <Tag class="pcard" {...linkProps}>
+                  <span class="avatar" style={`background:var(--pill-${avCls}-fg)`}>
+                    <span class="ini">{initials(m.name)}</span>
+                    {m.photo && (<img src={m.photo} alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.remove()" />)}
+                  </span>
+                  <span class="pbody">
+                    <span class="pname">{m.name}{hasLink && (<i class="ti ti-external-link" style="font-size:12px; color:var(--ink-3)"></i>)}</span>
+                    <span class="prole">{m.affil}</span>
+                    {m.focus && (<span class="pfocus">{m.focus}</span>)}
+                    {tags.length > 0 && (
+                      <span class="tags">
+                        {tags.map((t) => {
+                          const pm = pillarMeta[t];
+                          return pm ? (<span class="tag" style={`background:var(--pill-${pm.cls}-bg);color:var(--pill-${pm.cls}-fg)`}>{pm.label}</span>) : null;
+                        })}
+                      </span>
+                    )}
+                  </span>
+                </Tag>
+              );
+            })}
+          </div>
+        </div>
+      ))}
+
+      <div class="tier" id="visitors">
+        <h2>Visitors and alumni</h2>
+        <p>Once the visitor program and first cohorts are running, this is where current visitors and alumni placements will appear. Showing where people go is the question prospective fellows most want answered.</p>
+      </div>
+    </div>
+  </section>
+</Base>

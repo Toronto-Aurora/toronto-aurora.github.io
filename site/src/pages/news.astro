@@ -1,0 +1,30 @@
+---
+import Base from '../layouts/Base.astro';
+import news from '../data/news.json';
+const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+const fmt = (d) => { const [y, m] = d.split('-'); return MONTHS[parseInt(m, 10) - 1] + ' ' + y; };
+const items = [...news.items].sort((a, b) => (a.date < b.date ? 1 : -1));
+---
+<Base title="News — Aurora Institute">
+  <section class="page-hero">
+    <div class="wrap">
+      <div class="kicker" style="color:#84e6ca;">News</div>
+      <h1>What's happening at Aurora</h1>
+      <p>Preprints, talks, arrivals, awards, and meetings. A steady, dated feed is the clearest sign that an institute is active and rising.</p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:40px;">
+    <div class="wrap" style="max-width:760px;">
+      <div class="draft-note"><i class="ti ti-info-circle"></i> Seeded with recent, verified member preprints. The team will add institute news (fellow arrivals, talks, awards) as Aurora launches.</div>
+      <div style="margin-top:24px;">
+        {items.map((n) => (
+          <a class="news-item" href={n.url} target="_blank" rel="noopener">
+            <span class="news-date" style="min-width:84px;">{fmt(n.date)}</span>
+            <span class="news-text">{n.text} <i class="ti ti-external-link" style="font-size:12px; color:var(--ink-3)"></i></span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+</Base>

@@ -1,0 +1,23 @@
+{
+  "note": "Compiled from the team vision document. Each fellowship is typically two to three years; Aurora's +1 year extension applies to fellows who join.",
+  "uoft": [
+    { "name": "Arts & Science Postdoctoral Fellowship", "region": "U of T", "url": "https://www.sgs.utoronto.ca/awards/https-www-artsci-utoronto-ca-faculty-staff-research-supports-services-find-fundingas-postdoctoral-fellowship-program/" },
+    { "name": "Schmidt AI in Science Fellowship", "region": "U of T", "url": "https://schmidtfellows.utoronto.ca/apply/" },
+    { "name": "Research Excellence Postdoctoral Fellows", "region": "U of T", "url": "https://www.sgs.utoronto.ca/awards/research-excellence-postdoctoral-fellows-program/" },
+    { "name": "Data Sciences Institute Postdoctoral Fellowship", "region": "U of T", "url": "https://datasciences.utoronto.ca/postdoctoral-fellowship/" },
+    { "name": "Canada Postdoctoral Research Award (NSERC)", "region": "Canada", "url": "https://nserc-crsng.canada.ca/en/funding-opportunity/canada-postdoctoral-research-award-program#a3" }
+  ],
+  "international": [
+    { "name": "Rubicon", "region": "Netherlands", "url": "https://www.nwo.nl/en/researchprogrammes/rubicon" },
+    { "name": "JSPS Postdoctoral Fellowship", "region": "Japan", "url": "https://www.jsps.go.jp/english/e-ab/" },
+    { "name": "Marie Skłodowska-Curie Postdoctoral Fellowship", "region": "EU", "url": "https://marie-sklodowska-curie-actions.ec.europa.eu/actions/postdoctoral-fellowships/6-steps-to-prepare-your-application" },
+    { "name": "SNSF Postdoc Mobility", "region": "Switzerland", "url": "https://www.snf.ch/en/XIZpfY3iVS5KRRoD/funding/careers/postdoc-mobility" },
+    { "name": "UKRI Fellowships", "region": "UK", "url": "https://www.ukri.org/apply-for-funding/our-fellowship-opportunities/" },
+    { "name": "Humboldt Research Fellowship", "region": "Germany", "url": "https://www.humboldt-foundation.de/en/apply/sponsorship-programmes/humboldt-research-fellowship" },
+    { "name": "CSC", "region": "China", "url": "https://grad.uwo.ca/finances/CSC.html" },
+    { "name": "NRF Postdoctoral Fellowship", "region": "Korea", "url": "https://iiasa.ac.at/opportunities/korea-research-foundation-postdoctoral-fellowship" },
+    { "name": "NSTC", "region": "Taiwan", "url": "https://www.nstc.gov.tw/canada/en/detail/1cb0dfaf-2d89-40ac-9329-d2ff8038a14f" },
+    { "name": "A*STAR International Fellowship", "region": "Singapore", "url": "https://www.a-star.edu.sg/scholarships/home/scholarships/astar-international-fellowship" },
+    { "name": "SERB / ANRF Overseas Postdoctoral Fellowship", "region": "India", "url": "https://www.vajra-india.in/index.php/fellowships/overseas-postdoctoral-fellowship-program" }
+  ]
+}

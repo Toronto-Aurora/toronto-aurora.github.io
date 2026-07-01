@@ -1,0 +1,62 @@
+---
+import Base from '../layouts/Base.astro';
+import fellowships from '../data/fellowships.json';
+---
+<Base title="Programs — Aurora Institute">
+  <section class="page-hero">
+    <div class="wrap">
+      <div class="kicker" style="color:#84e6ca;">Programs &amp; opportunities</div>
+      <h1>What Aurora offers early-career researchers</h1>
+      <p>Aurora exists to make Toronto a place where the strongest students and postdocs want to be. Here is what that means in practice.</p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:44px;">
+    <div class="wrap prose">
+
+      <h2 id="co-mentorship"><i class="ti ti-arrows-exchange" style="color:var(--teal)"></i> Co-mentorship</h2>
+      <p>Every Aurora trainee, graduate student or postdoctoral fellow, works with at least two mentors drawn from different pillars. This is not a committee. It is a genuine collaborative relationship in which the trainee's research lives at the intersection of the mentors' expertise, so that dissertations and postdoctoral projects are cross-disciplinary by design rather than by chance. Postdocs mentor students directly, and that is a feature of the model, not an afterthought.</p>
+
+      <h2 id="extension"><i class="ti ti-calendar-plus" style="color:var(--violet)"></i> Fellowship extension (+1 year)</h2>
+      <p>Many competitive postdoctoral fellowships run only two years. Aurora adds a funded third year to fellows who join the institute, because building an independent research identity takes time, and to make Toronto directly competitive with longer offers elsewhere.</p>
+      <div class="callout">
+        <strong>How it works.</strong> Hold an eligible two- or three-year fellowship, join Aurora under the co-mentorship model, and apply for a funded one-year extension. Eligible awards include the U of T fellowships and the international programs listed below.
+      </div>
+
+      <h3>Eligible U of T fellowships</h3>
+      <table class="ftable">
+        <thead><tr><th>Fellowship</th><th>Where</th><th></th></tr></thead>
+        <tbody>
+          {fellowships.uoft.map((f) => (
+            <tr><td>{f.name}</td><td>{f.region}</td><td><a href={f.url} target="_blank" rel="noopener">Details ↗</a></td></tr>
+          ))}
+        </tbody>
+      </table>
+
+      <h3>International fellowships you can bring to Toronto</h3>
+      <table class="ftable">
+        <thead><tr><th>Fellowship</th><th>Country / region</th><th></th></tr></thead>
+        <tbody>
+          {fellowships.international.map((f) => (
+            <tr><td>{f.name}</td><td>{f.region}</td><td><a href={f.url} target="_blank" rel="noopener">Details ↗</a></td></tr>
+          ))}
+        </tbody>
+      </table>
+      <p style="font-size:13px; color:var(--ink-3);">This guide is maintained as opportunities change. Eligibility and citizenship rules vary by program, so check each official page.</p>
+
+      <h2 id="visitors"><i class="ti ti-plane" style="color:var(--blue)"></i> Visitor program</h2>
+      <p>Aurora runs funded short-term visits so collaborators and trainees can spend focused time in Toronto, give a talk or mini-symposium, and start a collaboration.</p>
+      <div class="callout">
+        <strong>Pilot terms (draft, pending Dunlap Blue-Sky funding).</strong> Two to three international visitors per year, stays of two to four weeks, with travel and local accommodation supported. The application window and how to apply will be announced.
+      </div>
+      <p>As funding grows, the program expands into tiers: short visits for senior collaborators, a longer summer program for graduate students, and semester-style embedded visits for postdocs. It builds on the existing Dunlap and CITA visitor activities and the CITA visitor agreement rather than duplicating them.</p>
+
+      <h2 id="career"><i class="ti ti-stairs-up" style="color:var(--pill-amber-fg)"></i> Career support</h2>
+      <p>Beyond research, Aurora supports the next step: dual mentoring, professional-development sessions tied to Dunlap's activities, postdoc-led lectures, and an internal annual review where trainees present and get feedback from the full faculty. As cohorts graduate, placement outcomes will be tracked and shown openly.</p>
+
+      <h2 id="join"><i class="ti ti-mail" style="color:var(--teal)"></i> Join us</h2>
+      <p>If you are considering a postdoc or PhD focused on the first billion years, or you hold (or are applying for) one of the fellowships above and want Toronto as your host, get in touch. Aurora is in its first phase, so this is a rare chance to help shape an institute from the ground up.</p>
+      <div class="callout"><strong>Contact.</strong> Email <a href="mailto:seiji.fujimoto@utoronto.ca">seiji.fujimoto@utoronto.ca</a> with a short note on your interests and which mentors or pillars you would want to work across. A shared address (info@aurorainstitute.ca) will replace this once the domain is set up.</div>
+    </div>
+  </section>
+</Base>

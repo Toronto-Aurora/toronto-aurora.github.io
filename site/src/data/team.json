@@ -1,0 +1,54 @@
+{
+  "note": "Faculty affiliations and one-line foci verified from official pages (June 2026); headshots hosted locally under public/people (confirm consent before launch). A. Sajina (Tufts) and U.-L. Pen (ASIAA primary) are external-affiliated faculty. Postdoc list provided by the team (includes members arriving fall 2026).",
+  "tiers": [
+    {
+      "id": "coordinators",
+      "title": "Coordinators",
+      "blurb": "The core leadership group spanning both institutions and all three pillars. Coordinators are also faculty.",
+      "members": [
+        { "name": "Seiji Fujimoto", "affil": "Astronomy & Astrophysics, U of T", "pillar": "observation", "focus": "Multi-wavelength observations of the first galaxies, black holes, and stars.", "link": "https://sfseiji.github.io/", "photo": "/people/fujimoto.jpg" },
+        { "name": "Pratika Dayal", "affil": "CITA & Astronomy, U of T", "pillar": "theory", "focus": "Models early galaxy formation, reionization, and dark matter with simulations.", "link": "https://pratika24.wixsite.com/pratika-dayal", "photo": "/people/dayal.jpg" },
+        { "name": "Adam Muzzin", "affil": "Physics & Astronomy, York University", "pillar": "observation", "focus": "Galaxy formation and evolution in the high-redshift universe via infrared surveys.", "link": "https://www.yorku.ca/professor/muzzin/", "photo": "/people/muzzin.jpg" },
+        { "name": "Josh Speagle", "affil": "Statistical Sciences & Astronomy, U of T", "pillar": "data", "focus": "Statistical and machine-learning methods to study how galaxies form, from large surveys.", "link": "https://joshspeagle.com/", "photo": "/people/speagle.jpg" }
+      ]
+    },
+    {
+      "id": "faculty",
+      "title": "Faculty",
+      "blurb": "Faculty at U of T and York whose work drives Aurora's science across observation, theory, and data science.",
+      "members": [
+        { "name": "Roberto Abraham", "affil": "Astronomy & Astrophysics, U of T", "pillar": "observation", "pillars": ["observation", "instrumentation"], "focus": "Builds low surface brightness telescopes (Dragonfly) to study galaxy evolution.", "link": "https://www.robertoabraham.com/", "photo": "/people/abraham.jpg" },
+        { "name": "Rahul Kannan", "affil": "Physics & Astronomy, York University", "pillar": "theory", "focus": "Cosmological simulations of galaxy formation and the epoch of reionization.", "link": "https://www.yorku.ca/science/profiles/faculty/rahul-kannan/", "photo": "/people/kannan.jpg" },
+        { "name": "Norman Murray", "affil": "CITA, U of T", "pillar": "theory", "focus": "Theory of galaxy formation, active galactic nuclei, and astrophysical dynamics.", "link": "https://www.astro.utoronto.ca/people/faculty/name/norm-murray/", "photo": "/people/murray.jpg" },
+        { "name": "Suresh Sivanandam", "affil": "Dunlap Institute, U of T", "pillar": "observation", "pillars": ["observation", "instrumentation"], "focus": "Infrared spectrographs and multi-wavelength studies of galaxy evolution.", "link": "https://www.dunlap.utoronto.ca/directory/suresh-sivanandam/", "photo": "/people/sivanandam.jpg" },
+        { "name": "J. Richard Bond", "affil": "CITA & Astronomy, U of T", "pillar": "theory", "focus": "Theoretical cosmology: the CMB, structure formation, dark matter and dark energy.", "link": "https://www.astro.utoronto.ca/people/faculty/name/dick-bond/", "photo": "/people/bond.jpg" },
+        { "name": "Jo Bovy", "affil": "Astronomy & Astrophysics, U of T", "pillar": "observation", "focus": "Dynamics, formation, and evolution of the Milky Way from large surveys.", "link": "https://www.astro.utoronto.ca/~bovy/", "photo": "/people/bovy.jpg" },
+        { "name": "Gwendolyn Eadie", "affil": "Astronomy & Statistical Sciences, U of T", "pillar": "data", "focus": "Bayesian and time-series methods for the Milky Way's dark matter halo.", "link": "https://www.astro.utoronto.ca/~eadie/intro.html", "photo": "/people/eadie.jpg" },
+        { "name": "Aviad Levis", "affil": "Computer Science & Astronomy, U of T", "pillar": "data", "focus": "Physics-aware computational imaging for astronomy, including black hole imaging.", "link": "https://www.aviadlevis.info/", "photo": "/people/levis.jpg" },
+        { "name": "Ting Li", "affil": "Astronomy & Astrophysics, U of T", "pillar": "observation", "focus": "Stellar streams and stars in the Milky Way to probe dark matter.", "link": "https://sazabi4.github.io/", "photo": "/people/li.jpg" },
+        { "name": "Peter Martin", "affil": "CITA, U of T", "pillar": "theory", "focus": "Interstellar matter and dust, from infrared imaging and theory.", "link": "https://www.astro.utoronto.ca/people/faculty/name/peter-martin/", "photo": "/people/martin.jpg" },
+        { "name": "Christopher Matzner", "affil": "Astronomy & Astrophysics, U of T", "pillar": "theory", "focus": "Astrophysical fluid dynamics: star formation, feedback, and transients.", "link": "https://www.astro.utoronto.ca/people/faculty/name/chris-matzner/", "photo": "/people/matzner.jpg" },
+        { "name": "Ue-Li Pen", "affil": "ASIAA (Taiwan) & CITA, U of T", "pillar": "theory", "focus": "21 cm cosmology, FRB and pulsar lensing, CHIME intensity mapping.", "link": "https://www.asiaa.sinica.edu.tw/people/cv.php?i=pen", "photo": "/people/pen.jpg" },
+        { "name": "Anna Sajina", "affil": "Physics & Astronomy, Tufts University", "pillar": "observation", "focus": "Dust-obscured galaxies and AGN through infrared observations.", "link": "https://as.tufts.edu/physics/people/faculty/anna-sajina", "photo": "/people/sajina.jpg" }
+      ]
+    },
+    {
+      "id": "postdocs",
+      "title": "Postdoctoral fellows",
+      "blurb": "Aurora's early-career core, including members arriving in fall 2026.",
+      "members": [
+        { "name": "Yoshihisa Asada", "affil": "Dunlap Fellow, U of T", "pillar": "observation", "focus": "Star formation in high-redshift galaxies with JWST.", "link": "https://sites.google.com/view/yoshi-asada/home", "photo": "/people/asada.jpg" },
+        { "name": "Qinyue Fei", "affil": "DADDAA Fellow, U of T", "pillar": "observation", "focus": "AGN feedback and molecular gas in quasar host galaxies.", "link": "#", "photo": "/people/fei.jpg" },
+        { "name": "Jacqueline Antwi-Danso", "affil": "Dunlap Fellow, U of T", "pillar": "observation", "focus": "Massive quiescent galaxies quenching in the first billion years.", "link": "https://antwi-danso.carrd.co", "photo": "/people/antwi-danso.jpg" },
+        { "name": "Haowen Zhang", "affil": "CITA Fellow, U of T", "pillar": "theory", "focus": "Empirical models linking dark matter halos, galaxies, and black holes.", "link": "https://zhw11387.wixsite.com/mysite", "photo": "/people/hzhang.jpg" },
+        { "name": "Christian Jespersen", "affil": "Schmidt AI Fellow, U of T", "pillar": "data", "focus": "Machine learning and Bayesian methods for galaxy formation.", "link": "https://astrockragh.github.io/", "photo": "/people/jespersen.jpg" },
+        { "name": "Will McClymont", "affil": "CITA Fellow, U of T", "pillar": "theory", "focus": "JWST and simulations of galaxy and black hole co-evolution.", "link": "http://www.williammcclymont.com", "photo": "/people/mcclymont.jpg" },
+        { "name": "Tri Nguyen", "affil": "NSERC Fellow, U of T", "pillar": "data", "focus": "Machine learning to probe dark matter from stellar dynamics.", "link": "https://trivnguyen.github.io/", "photo": "/people/nguyen.jpg" },
+        { "name": "Jose Maria Palencia", "affil": "DADDAA Fellow, U of T", "pillar": "observation", "focus": "Gravitational lensing of magnified stars at high redshift.", "link": "#", "photo": "/people/palencia.jpg" },
+        { "name": "Saiyang Zhang", "affil": "CITA Fellow, U of T", "pillar": "theory", "focus": "Primordial black holes and dark matter in the early universe.", "link": "https://sylvanzsy.github.io/", "photo": "/people/szhang.jpg" },
+        { "name": "Ava Polzin", "affil": "Dunlap Fellow, U of T", "pillar": "observation", "pillars": ["observation", "theory"], "focus": "Star formation and the baryon cycle in dwarf galaxies.", "link": "https://avapolzin.github.io/", "photo": "/people/polzin.jpg" },
+        { "name": "Chloe Cheng", "affil": "Research Excellence Fellow, U of T", "pillar": "observation", "focus": "Ultra-deep spectroscopy of elemental abundances in massive quiescent galaxies.", "link": "https://chloe-mt-cheng.github.io/", "photo": "/people/cheng.jpg" }
+      ]
+    }
+  ]
+}
