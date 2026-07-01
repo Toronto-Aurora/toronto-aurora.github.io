@@ -5,12 +5,12 @@ const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', '
 const fmt = (d) => { const [y, m] = d.split('-'); return MONTHS[parseInt(m, 10) - 1] + ' ' + y; };
 const items = [...news.items].sort((a, b) => (a.date < b.date ? 1 : -1));
 ---
-<Base title="News — Aurora Institute">
+<Base title="News — Aurora Institute" description="Preprints, talks, arrivals, awards, and meetings from across the Aurora Institute.">
   <section class="page-hero">
     <div class="wrap">
       <div class="kicker" style="color:#84e6ca;">News</div>
       <h1>What's happening at Aurora</h1>
-      <p>Preprints, talks, arrivals, awards, and meetings. A steady, dated feed is the clearest sign that an institute is active and rising.</p>
+      <p>Preprints, talks, arrivals, awards, and meetings from across Aurora.</p>
     </div>
   </section>
 

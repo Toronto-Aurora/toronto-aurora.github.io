@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://toronto-aurora.github.io/sitemap.xml

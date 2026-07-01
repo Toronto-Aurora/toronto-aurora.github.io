@@ -42,7 +42,7 @@ const theoryVideos = [
 
   <div class="hpanel hpanel-theory" data-theory>
     {theoryVideos.map((v, i) => (
-      <video class={`hvid${i === 0 ? ' is-active' : ''}`} src={v.src} data-credit={v.credit} autoplay muted loop playsinline preload="auto"></video>
+      <video class={`hvid${i === 0 ? ' is-active' : ''}`} src={v.src} data-credit={v.credit} autoplay muted loop playsinline preload={i === 0 ? 'auto' : 'metadata'} aria-hidden="true"></video>
     ))}
     <div class="hpanel-grad"></div>
     <div class="hpanel-credit" data-theory-credit>{theoryVideos[0].credit}</div>
