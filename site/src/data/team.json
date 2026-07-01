@@ -1,5 +1,5 @@
 {
-  "note": "Faculty affiliations and one-line foci verified from official pages (June 2026); headshots hosted locally under public/people (confirm consent before launch). A. Sajina (Tufts) and U.-L. Pen (ASIAA primary) are external-affiliated faculty. Postdoc list provided by the team (includes members arriving fall 2026).",
+  "note": "Faculty affiliations and one-line foci verified from official pages (June 2026); headshots hosted locally under public/people (confirm consent before launch). A. Sajina is joining U of T (Astronomy & Astrophysics) from Tufts; U.-L. Pen (ASIAA primary) is external-affiliated faculty. Postdoc list provided by the team (includes members arriving fall 2026).",
   "tiers": [
     {
       "id": "coordinators",
@@ -28,7 +28,7 @@
         { "name": "Ting Li", "affil": "Astronomy & Astrophysics, U of T", "pillar": "observation", "focus": "Stellar streams and stars in the Milky Way to probe dark matter.", "link": "https://sazabi4.github.io/", "photo": "/people/li.jpg" },
         { "name": "Peter Martin", "affil": "CITA, U of T", "pillar": "theory", "focus": "Interstellar matter and dust, from infrared imaging and theory.", "link": "https://www.astro.utoronto.ca/people/faculty/name/peter-martin/", "photo": "/people/martin.jpg" },
         { "name": "Ue-Li Pen", "affil": "ASIAA (Taiwan) & CITA, U of T", "pillar": "theory", "focus": "21 cm cosmology, FRB and pulsar lensing, CHIME intensity mapping.", "link": "https://www.asiaa.sinica.edu.tw/people/cv.php?i=pen", "photo": "/people/pen.jpg" },
-        { "name": "Anna Sajina", "affil": "Physics & Astronomy, Tufts University", "pillar": "observation", "focus": "Dust-obscured galaxies and AGN through infrared observations.", "link": "https://as.tufts.edu/physics/people/faculty/anna-sajina", "photo": "/people/sajina.jpg" }
+        { "name": "Anna Sajina", "affil": "Astronomy & Astrophysics, U of T", "pillar": "observation", "focus": "Dust-obscured galaxies and AGN through infrared observations.", "link": "https://as.tufts.edu/physics/people/faculty/anna-sajina", "photo": "/people/sajina.jpg" }
       ]
     },
     {
