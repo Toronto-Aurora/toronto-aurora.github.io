@@ -1,6 +1,15 @@
 {
-  "note": "Papers are those where an Aurora member (faculty, coordinator, postdoc, or student) is the first or second author. Links point to the ADS record (which shows the published version when available). 'venue' is set only for papers confirmed published (verified via CrossRef); leave it off for preprints. 'person' is the Aurora member who is first/second author. Do not add papers where no member is first or second author, and do not add unverified papers, awards, figures, or publication status.",
+  "note": "Papers are those where an Aurora member (faculty, coordinator, postdoc, or student) is the first or second author. Authorship was checked against the arXiv author list; publication status ('venue') was verified via CrossRef/journal_ref. Links point to the ADS record. 'person' is the member who is first/second author. Do not add papers where no member is first or second author, and do not add unverified papers, awards, figures, or venues.",
   "items": [
+    {
+      "type": "paper",
+      "date": "2026-04",
+      "person": "Jose Maria Palencia",
+      "title": "First statistical study of over 100 magnified stellar events at z ≈ 0.72 with JWST",
+      "blurb": "The first statistical sample of over 100 highly magnified individual stars at z ≈ 0.72, detected with JWST as microlensing transients near galaxy-cluster critical curves, opening a new probe of distant stellar populations and small-scale dark matter.",
+      "url": "https://ui.adsabs.harvard.edu/abs/arXiv:2604.22702/abstract",
+      "figure": "/news/palencia-stars.jpg"
+    },
     {
       "type": "paper",
       "date": "2026-03",
@@ -9,6 +18,63 @@
       "blurb": "Using DESI DR2 radial velocities and metallicities to characterize the C-19 stream, whose large velocity dispersion is hard to explain with a purely baryonic, disrupting globular-cluster progenitor.",
       "url": "https://ui.adsabs.harvard.edu/abs/arXiv:2603.11171/abstract",
       "figure": "/news/cstream.jpg"
+    },
+    {
+      "type": "paper",
+      "date": "2026-01",
+      "person": "Jose Maria Palencia",
+      "title": "A new free-form lens model of AS1063 from ultra-deep GLIMPSE imaging",
+      "blurb": "A new free-form lens model of the cluster AS1063 built from spectroscopically confirmed lensed galaxies and ultra-deep GLIMPSE imaging, which confirms and uncovers new lensed systems including a yellow-supergiant candidate at z ≈ 3.",
+      "url": "https://ui.adsabs.harvard.edu/abs/arXiv:2601.11704/abstract",
+      "figure": "/news/palencia-as1063.jpg"
+    },
+    {
+      "type": "paper",
+      "date": "2025-11",
+      "person": "Pratika Dayal",
+      "venue": "A&A",
+      "title": "Black hole merger rates in the first billion years in light of JWST data",
+      "blurb": "Modeling black-hole merger rates in the first billion years to test light- versus heavy-seed scenarios against the abundance of faint AGN that JWST finds at z = 4–9.",
+      "url": "https://ui.adsabs.harvard.edu/abs/arXiv:2511.20414/abstract",
+      "figure": "/news/dayal-bhmerger.jpg"
+    },
+    {
+      "type": "paper",
+      "date": "2025-10",
+      "person": "Seiji Fujimoto",
+      "title": "The ALPINE-CRISTAL-JWST Survey: JWST/IFU optical observations of 18 main-sequence galaxies at z = 4–6",
+      "blurb": "The ALPINE-CRISTAL-JWST survey combines kpc-resolved HST, JWST, and ALMA imaging and spectroscopy of 18 main-sequence galaxies at z = 4–6 to resolve their stars, gas, and dust together.",
+      "url": "https://ui.adsabs.harvard.edu/abs/arXiv:2510.16111/abstract",
+      "figure": "/news/fujimoto-alpine.jpg"
+    },
+    {
+      "type": "paper",
+      "date": "2025-10",
+      "person": "J. Richard Bond",
+      "venue": "JCAP",
+      "title": "The superclustering of hot gas: cosmological sensitivity in the WebSky simulations",
+      "blurb": "Orientation-aware summary statistics of the superclustering of hot gas in the WebSky simulations, sharpening the cosmological sensitivity of thermal Sunyaev-Zel'dovich and galaxy cross-correlations.",
+      "url": "https://ui.adsabs.harvard.edu/abs/arXiv:2510.08331/abstract",
+      "figure": "/news/bond-websky.jpg"
+    },
+    {
+      "type": "paper",
+      "date": "2025-10",
+      "person": "J. Richard Bond",
+      "title": "The WebSky [CII] forecasts and the search for primordial intermittent non-Gaussianity",
+      "blurb": "WebSky [CII] line-intensity mock maps that forecast upcoming wide-field submillimeter surveys (matched to CCAT) of cosmological [CII] emission from the epoch of reionization.",
+      "url": "https://ui.adsabs.harvard.edu/abs/arXiv:2510.18312/abstract",
+      "figure": "/news/bond-cii.jpg"
+    },
+    {
+      "type": "paper",
+      "date": "2025-07",
+      "person": "Peter Martin",
+      "venue": "A&A",
+      "title": "Quantitative morphology of Galactic cirrus in deep optical imaging",
+      "blurb": "A morphological study of optical Galactic cirrus in deep imaging, using intensity statistics, angular power spectra, and wavelets to characterize the diffuse interstellar medium.",
+      "url": "https://ui.adsabs.harvard.edu/abs/arXiv:2507.05217/abstract",
+      "figure": "/news/martin-cirrus.jpg"
     },
     {
       "type": "paper",
