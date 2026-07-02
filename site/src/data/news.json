@@ -1,23 +1,14 @@
 {
-  "note": "Papers are first- or lead-author preprints/publications by Aurora members. Links point to the ADS record (which shows the published version when available). 'venue' is set only for papers confirmed published (verified via CrossRef); leave it off for preprints. Do not add unverified papers, awards, figures, or publication status.",
+  "note": "Papers are those where an Aurora member (faculty, coordinator, postdoc, or student) is the first or second author. Links point to the ADS record (which shows the published version when available). 'venue' is set only for papers confirmed published (verified via CrossRef); leave it off for preprints. 'person' is the Aurora member who is first/second author. Do not add papers where no member is first or second author, and do not add unverified papers, awards, figures, or publication status.",
   "items": [
     {
       "type": "paper",
       "date": "2026-03",
-      "person": "Ting Li",
+      "person": "Nasser Mohammed",
       "title": "The kinematically hot, extremely metal-poor C-19 stellar stream in DESI DR2",
       "blurb": "Using DESI DR2 radial velocities and metallicities to characterize the C-19 stream, whose large velocity dispersion is hard to explain with a purely baryonic, disrupting globular-cluster progenitor.",
       "url": "https://ui.adsabs.harvard.edu/abs/arXiv:2603.11171/abstract",
       "figure": "/news/cstream.jpg"
-    },
-    {
-      "type": "paper",
-      "date": "2026-02",
-      "person": "Aviad Levis",
-      "title": "Dynamic black-hole emission tomography with physics-informed neural fields",
-      "blurb": "Physics-informed neural fields reconstruct the dynamic, 3D gas around a black hole from sparse single-viewpoint radio measurements, moving beyond the Keplerian assumptions of earlier methods.",
-      "url": "https://ui.adsabs.harvard.edu/abs/arXiv:2602.08029/abstract",
-      "figure": "/news/levis.jpg"
     },
     {
       "type": "paper",
