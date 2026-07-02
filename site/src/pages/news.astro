@@ -9,7 +9,7 @@ const typeMeta = {
   note: { label: 'News', cls: 'blue', icon: 'ti-sparkles' },
 };
 const items = [...news.items].sort((a, b) => (a.date < b.date ? 1 : -1));
-const hay = (n) => [n.title, n.blurb, n.person, (typeMeta[n.type] || {}).label].filter(Boolean).join(' ').toLowerCase();
+const hay = (n) => [n.title, n.blurb, n.person, n.venue, n.venue ? 'published' : (n.type === 'paper' ? 'preprint' : ''), (typeMeta[n.type] || {}).label].filter(Boolean).join(' ').toLowerCase();
 ---
 <Base title="News — Aurora Institute" description="Preprints, talks, arrivals, awards, and meetings from across the Aurora Institute.">
   <section class="page-hero">
@@ -37,6 +37,10 @@ const hay = (n) => [n.title, n.blurb, n.person, (typeMeta[n.type] || {}).label].
       <div class="news-grid" id="news-grid">
         {items.map((n) => {
           const tm = typeMeta[n.type] || typeMeta.note;
+          const published = n.type === 'paper' && n.venue;
+          const label = published ? n.venue : tm.label;
+          const cls = published ? 'blue' : tm.cls;
+          const icon = published ? 'ti-book-2' : tm.icon;
           return (
             <article class="ncard" data-type={n.type} data-search={hay(n)}>
               {n.type === 'paper' && n.figure && (
@@ -51,14 +55,14 @@ const hay = (n) => [n.title, n.blurb, n.person, (typeMeta[n.type] || {}).label].
               )}
               <div class="ncard-body">
                 <div class="ncard-top">
-                  <span class="ncard-label" style={`background:var(--pill-${tm.cls}-bg);color:var(--pill-${tm.cls}-fg)`}><i class={`ti ${tm.icon}`}></i> {tm.label}</span>
+                  <span class="ncard-label" style={`background:var(--pill-${cls}-bg);color:var(--pill-${cls}-fg)`}><i class={`ti ${icon}`}></i> {label}</span>
                   <span class="ncard-date">{fmt(n.date)}</span>
                 </div>
                 <h3 class="ncard-title"><a href={n.url} target="_blank" rel="noopener">{n.title}</a></h3>
                 {n.blurb && <p class="ncard-blurb">{n.blurb}</p>}
                 <div class="ncard-foot">
                   <span class="ncard-person"><i class="ti ti-user"></i> {n.person}</span>
-                  <a class="ncard-link" href={n.url} target="_blank" rel="noopener">{n.type === 'paper' ? 'arXiv' : 'Details'} <i class="ti ti-arrow-up-right"></i></a>
+                  <a class="ncard-link" href={n.url} target="_blank" rel="noopener">{n.type === 'paper' ? 'ADS' : 'Details'} <i class="ti ti-arrow-up-right"></i></a>
                 </div>
               </div>
             </article>

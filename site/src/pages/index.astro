@@ -176,13 +176,15 @@ const latest = [...news.items].sort((a, b) => (a.date < b.date ? 1 : -1)).slice(
           <h3><i class="ti ti-news" style="color:var(--link)"></i> Latest from Aurora</h3>
           {latest.map((n) => {
             const tm = newsType[n.type] || newsType.note;
+            const label = (n.type === 'paper' && n.venue) ? n.venue : tm.label;
+            const cls = (n.type === 'paper' && n.venue) ? 'blue' : tm.cls;
             return (
               <a class="news-mini" href={n.url} target="_blank" rel="noopener">
                 {n.figure && (<span class="nm-thumb"><img src={n.figure} alt="" loading="lazy" /></span>)}
                 {!n.figure && n.photo && (<span class="nm-thumb nm-round"><img src={n.photo} alt="" loading="lazy" /></span>)}
                 <span class="nm-body">
                   <span class="nm-top">
-                    <span class="nm-label" style={`background:var(--pill-${tm.cls}-bg);color:var(--pill-${tm.cls}-fg)`}>{tm.label}</span>
+                    <span class="nm-label" style={`background:var(--pill-${cls}-bg);color:var(--pill-${cls}-fg)`}>{label}</span>
                     <span class="nm-date">{fmt(n.date)}</span>
                   </span>
                   <span class="nm-title">{n.title}</span>

@@ -1,5 +1,5 @@
 {
-  "note": "Papers are verified first- or lead-author preprints by Aurora members (arXiv links and figures checked; figures are the members' own). Award and note items are added as they happen. Do not add unverified papers, awards, or figures.",
+  "note": "Papers are first- or lead-author preprints/publications by Aurora members. Links point to the ADS record (which shows the published version when available). 'venue' is set only for papers confirmed published (verified via CrossRef); leave it off for preprints. Do not add unverified papers, awards, figures, or publication status.",
   "items": [
     {
       "type": "paper",
@@ -7,7 +7,7 @@
       "person": "Ting Li",
       "title": "The kinematically hot, extremely metal-poor C-19 stellar stream in DESI DR2",
       "blurb": "Using DESI DR2 radial velocities and metallicities to characterize the C-19 stream, whose large velocity dispersion is hard to explain with a purely baryonic, disrupting globular-cluster progenitor.",
-      "url": "https://arxiv.org/abs/2603.11171",
+      "url": "https://ui.adsabs.harvard.edu/abs/arXiv:2603.11171/abstract",
       "figure": "/news/cstream.jpg"
     },
     {
@@ -16,25 +16,27 @@
       "person": "Aviad Levis",
       "title": "Dynamic black-hole emission tomography with physics-informed neural fields",
       "blurb": "Physics-informed neural fields reconstruct the dynamic, 3D gas around a black hole from sparse single-viewpoint radio measurements, moving beyond the Keplerian assumptions of earlier methods.",
-      "url": "https://arxiv.org/abs/2602.08029",
+      "url": "https://ui.adsabs.harvard.edu/abs/arXiv:2602.08029/abstract",
       "figure": "/news/levis.jpg"
     },
     {
       "type": "paper",
       "date": "2025-02",
       "person": "Pratika Dayal",
+      "venue": "A&A",
       "title": "Synergising semi-analytical models and hydrodynamical simulations to interpret JWST data from the first billion years",
       "blurb": "Feeding cold-gas fractions and star-formation efficiencies from the SPHINX20 radiation-hydrodynamics simulation into the DELPHI semi-analytic model to explain the abundance of bright galaxies at z ≥ 11 and the drivers of reionization.",
-      "url": "https://arxiv.org/abs/2502.02647",
+      "url": "https://ui.adsabs.harvard.edu/abs/arXiv:2502.02647/abstract",
       "figure": "/news/delphi.jpg"
     },
     {
       "type": "paper",
       "date": "2025-01",
       "person": "Seiji Fujimoto",
+      "venue": "ApJ",
       "title": "GLIMPSE: an ultra-faint Pop III galaxy candidate and first constraints on the Pop III UV luminosity function at z ≈ 6–7",
       "blurb": "A NIRCam-based search across ~500 arcmin² of JWST legacy fields turns up GLIMPSE-16043, a promising ultra-faint Population III galaxy candidate at z ≈ 6.5, and sets first limits on the Pop III UV luminosity function.",
-      "url": "https://arxiv.org/abs/2501.11678",
+      "url": "https://ui.adsabs.harvard.edu/abs/arXiv:2501.11678/abstract",
       "figure": "/news/glimpse.jpg"
     }
   ]
