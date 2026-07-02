@@ -1,5 +1,5 @@
 {
-  "note": "Papers are those where an Aurora member (faculty, coordinator, postdoc, or student) is the first or second author. Authorship was checked against the arXiv author list; publication status ('venue') was verified via CrossRef/journal_ref. Links point to the ADS record. 'person' is the member who is first/second author. Do not add papers where no member is first or second author, and do not add unverified papers, awards, figures, or venues.",
+  "note": "Papers are those where an Aurora member is the first or second author, PLUS papers from Aurora-led JWST surveys (VENUS, led by S. Fujimoto; MINERVA, led by A. Muzzin), which are included regardless of author position and attributed to the survey lead. Authorship checked against the arXiv author list; 'venue' set only for papers confirmed published. Links point to the ADS record. Do not add unverified papers, awards, figures, or venues.",
   "items": [
     {
       "type": "paper",
@@ -21,12 +21,33 @@
     },
     {
       "type": "paper",
+      "date": "2026-02",
+      "person": "Seiji Fujimoto",
+      "survey": "VENUS",
+      "title": "VENUS: a strong-lensing model of MACS J1931.8-2635 and the farthest multiply imaged supernova",
+      "blurb": "A strong-lensing model of the cluster MACS J1931.8-2635 from the JWST VENUS survey, accompanying the spectroscopically confirmed supernova SN Eos at z = 5.13 and revealing new multiply imaged systems.",
+      "url": "https://ui.adsabs.harvard.edu/abs/arXiv:2602.14074/abstract",
+      "figure": "/news/venus-macsj1931.jpg"
+    },
+    {
+      "type": "paper",
       "date": "2026-01",
       "person": "Jose Maria Palencia",
       "title": "A new free-form lens model of AS1063 from ultra-deep GLIMPSE imaging",
       "blurb": "A new free-form lens model of the cluster AS1063 built from spectroscopically confirmed lensed galaxies and ultra-deep GLIMPSE imaging, which confirms and uncovers new lensed systems including a yellow-supergiant candidate at z ≈ 3.",
       "url": "https://ui.adsabs.harvard.edu/abs/arXiv:2601.11704/abstract",
       "figure": "/news/palencia-as1063.jpg"
+    },
+    {
+      "type": "paper",
+      "date": "2025-12",
+      "person": "Seiji Fujimoto",
+      "survey": "VENUS",
+      "venue": "A&A",
+      "title": "VENUS: a multiply imaged Little Red Dot with an apparent blue component behind Abell 383",
+      "blurb": "A doubly-imaged Little Red Dot candidate (A383-LRD1) behind the cluster Abell 383, showing an apparent blue component, from the JWST VENUS survey.",
+      "url": "https://ui.adsabs.harvard.edu/abs/arXiv:2512.02117/abstract",
+      "figure": "/news/venus-redblue.jpg"
     },
     {
       "type": "paper",
@@ -65,6 +86,16 @@
       "blurb": "WebSky [CII] line-intensity mock maps that forecast upcoming wide-field submillimeter surveys (matched to CCAT) of cosmological [CII] emission from the epoch of reionization.",
       "url": "https://ui.adsabs.harvard.edu/abs/arXiv:2510.18312/abstract",
       "figure": "/news/bond-cii.jpg"
+    },
+    {
+      "type": "paper",
+      "date": "2025-07",
+      "person": "Adam Muzzin",
+      "survey": "MINERVA",
+      "title": "MINERVA: a NIRCam medium-band and MIRI imaging survey to unlock the hidden gems of the distant Universe",
+      "blurb": "An overview of MINERVA, a JWST Cycle 4 treasury program of 8-band NIRCam medium-band and MIRI imaging across four CANDELS fields, designed to uncover distant and dust-obscured galaxies.",
+      "url": "https://ui.adsabs.harvard.edu/abs/arXiv:2507.19706/abstract",
+      "figure": "/news/minerva-survey.jpg"
     },
     {
       "type": "paper",
