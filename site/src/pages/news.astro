@@ -3,7 +3,13 @@ import Base from '../layouts/Base.astro';
 import news from '../data/news.json';
 const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 const fmt = (d) => { const [y, m] = d.split('-'); return MONTHS[parseInt(m, 10) - 1] + ' ' + y; };
+const typeMeta = {
+  paper: { label: 'Preprint', cls: 'teal', icon: 'ti-file-text' },
+  award: { label: 'Award', cls: 'amber', icon: 'ti-award' },
+  note: { label: 'News', cls: 'blue', icon: 'ti-sparkles' },
+};
 const items = [...news.items].sort((a, b) => (a.date < b.date ? 1 : -1));
+const hay = (n) => [n.title, n.blurb, n.person, (typeMeta[n.type] || {}).label].filter(Boolean).join(' ').toLowerCase();
 ---
 <Base title="News — Aurora Institute" description="Preprints, talks, arrivals, awards, and meetings from across the Aurora Institute.">
   <section class="page-hero">
@@ -14,16 +20,79 @@ const items = [...news.items].sort((a, b) => (a.date < b.date ? 1 : -1));
     </div>
   </section>
 
-  <section class="section" style="padding-top:40px;">
-    <div class="wrap" style="max-width:760px;">
-      <div style="margin-top:24px;">
-        {items.map((n) => (
-          <a class="news-item" href={n.url} target="_blank" rel="noopener">
-            <span class="news-date" style="min-width:84px;">{fmt(n.date)}</span>
-            <span class="news-text">{n.text} <i class="ti ti-external-link" style="font-size:12px; color:var(--ink-3)"></i></span>
-          </a>
-        ))}
+  <section class="section" style="padding-top:36px;">
+    <div class="wrap">
+      <div class="news-toolbar">
+        <div class="news-search">
+          <i class="ti ti-search"></i>
+          <input type="search" id="news-q" placeholder="Search papers, people, topics" aria-label="Search news" autocomplete="off" />
+        </div>
+        <div class="news-filters">
+          <button class="nf-btn is-on" data-f="all">All</button>
+          <button class="nf-btn" data-f="paper">Papers</button>
+          <button class="nf-btn" data-f="award">Awards</button>
+        </div>
       </div>
+
+      <div class="news-grid" id="news-grid">
+        {items.map((n) => {
+          const tm = typeMeta[n.type] || typeMeta.note;
+          return (
+            <article class="ncard" data-type={n.type} data-search={hay(n)}>
+              {n.type === 'paper' && n.figure && (
+                <a class="ncard-fig" href={n.url} target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
+                  <img src={n.figure} alt="" loading="lazy" />
+                </a>
+              )}
+              {n.type === 'award' && n.photo && (
+                <a class="ncard-photo" href={n.url} target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
+                  <img src={n.photo} alt="" loading="lazy" />
+                </a>
+              )}
+              <div class="ncard-body">
+                <div class="ncard-top">
+                  <span class="ncard-label" style={`background:var(--pill-${tm.cls}-bg);color:var(--pill-${tm.cls}-fg)`}><i class={`ti ${tm.icon}`}></i> {tm.label}</span>
+                  <span class="ncard-date">{fmt(n.date)}</span>
+                </div>
+                <h3 class="ncard-title"><a href={n.url} target="_blank" rel="noopener">{n.title}</a></h3>
+                {n.blurb && <p class="ncard-blurb">{n.blurb}</p>}
+                <div class="ncard-foot">
+                  <span class="ncard-person"><i class="ti ti-user"></i> {n.person}</span>
+                  <a class="ncard-link" href={n.url} target="_blank" rel="noopener">{n.type === 'paper' ? 'arXiv' : 'Details'} <i class="ti ti-arrow-up-right"></i></a>
+                </div>
+              </div>
+            </article>
+          );
+        })}
+      </div>
+      <p class="news-empty" id="news-empty" hidden>No matching items.</p>
     </div>
   </section>
+
+  <script>
+    const q = document.getElementById('news-q');
+    const cards = Array.from(document.querySelectorAll('.ncard'));
+    const btns = Array.from(document.querySelectorAll('.nf-btn'));
+    const empty = document.getElementById('news-empty');
+    let filter = 'all';
+    const apply = () => {
+      const term = (q.value || '').trim().toLowerCase();
+      let shown = 0;
+      cards.forEach((c) => {
+        const okType = filter === 'all' || c.dataset.type === filter;
+        const okText = !term || (c.dataset.search || '').includes(term);
+        const show = okType && okText;
+        c.hidden = !show;
+        if (show) shown++;
+      });
+      empty.hidden = shown > 0;
+      empty.textContent = (filter === 'award' && !term) ? 'No awards to show yet. Member awards will be listed here as they happen.' : 'No matching items.';
+    };
+    q.addEventListener('input', apply);
+    btns.forEach((b) => b.addEventListener('click', () => {
+      filter = b.dataset.f;
+      btns.forEach((x) => x.classList.toggle('is-on', x === b));
+      apply();
+    }));
+  </script>
 </Base>

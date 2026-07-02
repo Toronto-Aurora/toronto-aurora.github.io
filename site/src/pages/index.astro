@@ -54,7 +54,12 @@ const hub = pts.find((p) => p.hub) ?? pts[0];
 
 const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 const fmt = (dt) => { const [y, m] = dt.split('-'); return MONTHS[parseInt(m, 10) - 1] + ' ' + y; };
-const latest = news.items.slice(0, 4);
+const newsType = {
+  paper: { label: 'Preprint', cls: 'teal', icon: 'ti-file-text' },
+  award: { label: 'Award', cls: 'amber', icon: 'ti-award' },
+  note: { label: 'News', cls: 'blue', icon: 'ti-sparkles' },
+};
+const latest = [...news.items].sort((a, b) => (a.date < b.date ? 1 : -1)).slice(0, 4);
 ---
 <Base>
   <Hero />
@@ -169,12 +174,23 @@ const latest = news.items.slice(0, 4);
         </div>
         <div class="panel">
           <h3><i class="ti ti-news" style="color:var(--link)"></i> Latest from Aurora</h3>
-          {latest.map((n) => (
-            <a class="news-item" href={n.url} target="_blank" rel="noopener">
-              <span class="news-date">{fmt(n.date)}</span>
-              <span class="news-text">{n.text}</span>
-            </a>
-          ))}
+          {latest.map((n) => {
+            const tm = newsType[n.type] || newsType.note;
+            return (
+              <a class="news-mini" href={n.url} target="_blank" rel="noopener">
+                {n.figure && (<span class="nm-thumb"><img src={n.figure} alt="" loading="lazy" /></span>)}
+                {!n.figure && n.photo && (<span class="nm-thumb nm-round"><img src={n.photo} alt="" loading="lazy" /></span>)}
+                <span class="nm-body">
+                  <span class="nm-top">
+                    <span class="nm-label" style={`background:var(--pill-${tm.cls}-bg);color:var(--pill-${tm.cls}-fg)`}>{tm.label}</span>
+                    <span class="nm-date">{fmt(n.date)}</span>
+                  </span>
+                  <span class="nm-title">{n.title}</span>
+                  <span class="nm-person">{n.person}</span>
+                </span>
+              </a>
+            );
+          })}
           <div style="margin-top:16px;"><a class="link-more" href="/news">All news <i class="ti ti-arrow-right"></i></a></div>
         </div>
       </div>
