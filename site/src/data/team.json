@@ -135,7 +135,8 @@
           "pillar": "observation",
           "focus": "Stellar streams and stars in the Milky Way to probe dark matter.",
           "link": "https://sazabi4.github.io/",
-          "photo": "/people/li.jpg"
+          "photo": "/people/li.jpg",
+          "orcid": "0000-0003-2644-135X"
         },
         {
           "name": "Peter Martin",
@@ -204,7 +205,8 @@
           "pillar": "theory",
           "focus": "Empirical models linking dark matter halos, galaxies, and black holes.",
           "link": "https://zhw11387.wixsite.com/mysite",
-          "photo": "/people/hzhang.jpg"
+          "photo": "/people/hzhang.jpg",
+          "orcid": "0000-0002-4321-3538"
         },
         {
           "name": "Christian Jespersen",
@@ -212,7 +214,8 @@
           "pillar": "data",
           "focus": "Machine learning and Bayesian methods for galaxy formation.",
           "link": "https://astrockragh.github.io/",
-          "photo": "/people/jespersen.jpg"
+          "photo": "/people/jespersen.jpg",
+          "orcid": "0000-0002-8896-6496"
         },
         {
           "name": "Will McClymont",
@@ -247,7 +250,8 @@
           "pillar": "theory",
           "focus": "Primordial black holes and dark matter in the early universe.",
           "link": "https://sylvanzsy.github.io/",
-          "photo": "/people/szhang.jpg"
+          "photo": "/people/szhang.jpg",
+          "orcid": "0000-0003-1541-177X"
         },
         {
           "name": "Ava Polzin",

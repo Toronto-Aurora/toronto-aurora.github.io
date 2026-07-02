@@ -21,6 +21,16 @@
     },
     {
       "type": "paper",
+      "date": "2026-03",
+      "person": "Norman Murray",
+      "venue": "ApJ",
+      "title": "The in situ growth of stellar-mass \"light\" seed black holes in nuclear star clusters",
+      "blurb": "Magnetohydrodynamic simulations of how stellar-mass \"light\" seed black holes, the remnants of massive stars, form and grow inside nuclear star clusters as a possible channel toward supermassive black holes.",
+      "url": "https://ui.adsabs.harvard.edu/abs/arXiv:2603.10581/abstract",
+      "figure": "/news/murray-seedbh.jpg"
+    },
+    {
+      "type": "paper",
       "date": "2026-02",
       "person": "Seiji Fujimoto",
       "survey": "VENUS",
