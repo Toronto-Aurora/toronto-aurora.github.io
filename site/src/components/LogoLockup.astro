@@ -1,15 +1,16 @@
 ---
-// Aurora Institute lockup — faithful to the approved artwork.
+// Aurora Initiative lockup — faithful to the approved artwork.
 // The "A" is NOT a full triangle: only its LEFT leg is drawn (a gradient wedge).
 // The RIGHT leg is the aurora arch itself, which rises from the right foot up to
 // the apex and then keeps sweeping over the wordmark before fading out. The CN
-// Tower stands in for the "i" of Institute. Wordmark + tower use `color`.
+// Tower stands in for the second "i" of the wordmark. Wordmark + tower use `color`.
 interface Props { height?: number; color?: string; }
 const { height = 32, color = '#f4f7ff' } = Astro.props;
-const tx = 634; // CN Tower x, centered over the dotless "i" of Institute (measured, Poppins 500 @ x=205)
+const tx = 634; // CN Tower x. STALE: measured for "Instıtute"; needs re-measuring for
+                // "Inıtiative". This component is unused -- the shipped logo is /aurora-logo-*.svg.
 ---
-<svg viewBox="0 0 920 140" height={height} role="img" aria-label="Aurora Institute" style={`height:${height}px;width:auto;display:block`}>
-  <title>Aurora Institute</title>
+<svg viewBox="0 0 920 140" height={height} role="img" aria-label="Aurora Initiative" style={`height:${height}px;width:auto;display:block`}>
+  <title>Aurora Initiative</title>
   <defs>
     <linearGradient id="llV" gradientUnits="userSpaceOnUse" x1="70" y1="10" x2="70" y2="122">
       <stop offset="0" stop-color="#3fc8a8" />
@@ -35,9 +36,9 @@ const tx = 634; // CN Tower x, centered over the dotless "i" of Institute (measu
   <path fill="none" stroke="url(#llV)" stroke-width="6" stroke-linecap="round" d="M60 82 L90 82" />
 
   <!-- wordmark (dotless i so the tower stands in cleanly) -->
-  <text x="205" y="100" font-family="'Poppins', Inter, sans-serif" font-size="74" font-weight="500" letter-spacing="1" fill={color}>Aurora Inst&#305;tute</text>
+  <text x="205" y="100" font-family="'Poppins', Inter, sans-serif" font-size="74" font-weight="500" letter-spacing="1" fill={color}>Aurora In&#305;tiative</text>
 
-  <!-- CN Tower over the "i" of Institute -->
+  <!-- CN Tower over the dotless "i" -->
   <g fill={color} stroke="none">
     <path d={`M${tx - 0.8} 28 L${tx - 0.4} 6 L${tx} 4 L${tx + 0.4} 6 L${tx + 0.8} 28 Z`} />
     <ellipse cx={tx} cy="30" rx="2.6" ry="1.6" />

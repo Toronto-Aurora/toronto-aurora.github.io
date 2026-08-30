@@ -4,7 +4,7 @@ import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 interface Props { title?: string; description?: string; }
 const {
-  title = 'Aurora Institute',
+  title = 'Aurora Initiative',
   description = 'Galaxy and black hole formation in the first billion years of cosmic history. A cross-institutional initiative of the University of Toronto and York University.',
 } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site);
@@ -19,7 +19,7 @@ const ogImage = new URL('/og-image.png', Astro.site);
     <title>{title}</title>
     <link rel="canonical" href={canonical} />
     <meta name="theme-color" content="#0e1630" />
-    <meta property="og:site_name" content="Aurora Institute" />
+    <meta property="og:site_name" content="Aurora Initiative" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />

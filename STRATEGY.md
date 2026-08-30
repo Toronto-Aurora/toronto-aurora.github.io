@@ -1,4 +1,4 @@
-# Aurora Institute — Website Strategy and Design Plan
+# Aurora Initiative — Website Strategy and Design Plan
 
 Working draft v0.1 (2026-06-30). Author: Seiji + Claude. Audience: Aurora coordinators (Fujimoto, Dayal, Muzzin, Speagle) and the student developer.
 
@@ -156,7 +156,7 @@ Phase 5, momentum: keep the news feed and people/alumni pages current; add the p
 
 ## 13. Open decisions
 
-1. Name: proceed with "Aurora Institute" as the working brand? (The vision doc has largely converged on it.)
+1. Name: proceed with "Aurora Initiative" as the working brand? (The vision doc has largely converged on it.)
 2. Logo: which one or two directions to develop?
 3. Infrastructure: accept the GitHub Pages + static baseline? Astro or HugoBlox?
 4. Maintenance owner: is there a committed student developer, and should Claude build the first version for them to inherit, or build alongside them?

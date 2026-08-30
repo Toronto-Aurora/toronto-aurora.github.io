@@ -1,6 +1,6 @@
-# Aurora Institute — website
+# Aurora Initiative — website
 
-Static site for the Aurora Institute (working name), a cross-institutional high-z research initiative of the University of Toronto and York University. Built with [Astro](https://astro.build), deploys to GitHub Pages.
+Static site for the Aurora Initiative (working name), a cross-institutional high-z research initiative of the University of Toronto and York University. Built with [Astro](https://astro.build), deploys to GitHub Pages.
 
 See `STRATEGY.md` (in this folder) for the full design and content strategy and the peer-institute benchmark behind it.
 
