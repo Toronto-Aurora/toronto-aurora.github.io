@@ -70,8 +70,8 @@ const latest = [...news.items].sort((a, b) => (a.date < b.date ? 1 : -1)).slice(
       <div class="mission-head">
         <div class="section-head" style="margin-bottom:0;">
           <div class="kicker">Our mission</div>
-          <h2>Where three disciplines converge on the first billion years</h2>
-          <p>The Universe's first billion years hold some of its deepest open questions: the first stars and galaxies, the first black holes and their surprisingly rapid growth, and cosmic reionization. Aurora sets out to answer them by uniting the three complementary strengths that few places bring together the way Toronto does: <strong>observation, theory, and data science</strong>. It is one of the very few institutes built end to end around the early Universe.</p>
+          <h2>Understanding the Universe's first billion years</h2>
+          <p>JWST has pushed direct observation into the first billion years after the Big Bang, and much of what it found there was not predicted, from galaxies at z &gt; 10 to black holes that grew faster than the models allow. Aurora works on this period from three directions at once: <strong>observation, theory, and data science</strong>. The initiative connects 28 researchers at the University of Toronto and York University, most of them within a few blocks of each other.</p>
         </div>
         <div class="mission-brand">
           <img src="/aurora-logo-black.png" alt="Aurora Initiative" width="1100" height="203" style="width:100%;max-width:480px;height:auto;display:block" />
@@ -98,7 +98,7 @@ const latest = [...news.items].sort((a, b) => (a.date < b.date ? 1 : -1)).slice(
       <div class="section-head">
         <div class="kicker">People</div>
         <h2>Coordinators</h2>
-        <p>Four coordinators, one from each of DADDAA, CITA, York, and Statistical Sciences, so Aurora is cross-institutional by design, spanning both universities and all three pillars: observation, theory, and data science.</p>
+        <p>Four coordinators, one from each of DADDAA, CITA, York, and Statistical Sciences. Between them they cover both universities and all three pillars.</p>
       </div>
       <div class="coord-grid">
         {coordinators.map((m) => (
@@ -120,9 +120,9 @@ const latest = [...news.items].sort((a, b) => (a.date < b.date ? 1 : -1)).slice(
   <section class="section" id="offer" style="padding-top:0;">
     <div class="wrap">
       <div class="section-head">
-        <div class="kicker">What Aurora offers</div>
-        <h2>Concrete support, by design</h2>
-        <p>What makes Toronto competitive for the strongest early-career researchers, from the day they arrive.</p>
+        <div class="kicker">Support</div>
+        <h2>What Aurora offers</h2>
+        <p>The practical reasons to come to Toronto, in place from the day you arrive.</p>
       </div>
 
       <div class="offer-group">
@@ -158,8 +158,8 @@ const latest = [...news.items].sort((a, b) => (a.date < b.date ? 1 : -1)).slice(
     <div class="wrap">
       <div class="net-grid">
         <div class="panel">
-          <h3><i class="ti ti-map-pin" style="color:var(--link)"></i> A global network, hosted in Toronto</h3>
-          <p class="psub">Aurora brings international fellowships and visitors to Toronto and keeps members connected to research groups across the world.</p>
+          <h3>Collaborators around the world</h3>
+          <p class="psub">Institutions where Aurora members have active collaborators, drawn from the team's current projects.</p>
           <svg class="netmap" viewBox="0 40 720 250" role="img" aria-label="World map of collaborator locations centered on Toronto">
             <rect x="0" y="40" width="720" height="250" rx="12" fill="#0b1330" />
             <g fill="#1c294c" fill-rule="evenodd">
@@ -169,11 +169,11 @@ const latest = [...news.items].sort((a, b) => (a.date < b.date ? 1 : -1)).slice(
             {pts.filter((p) => !p.hub).map((p) => (<circle cx={p.x} cy={p.y} r="3.6" fill="#5b8def" />))}
             <circle cx={hub.x} cy={hub.y} r="5.5" fill="#2dd4a7" />
             <circle cx={hub.x} cy={hub.y} r="11" fill="none" stroke="#2dd4a7" stroke-width="1" opacity="0.6" />
-            <text x={hub.x + 12} y={hub.y + 4} font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#7df3d0">Toronto</text>
+            <text x={hub.x + 12} y={hub.y + 4} font-family="Source Sans 3, sans-serif" font-size="13" font-weight="600" fill="#7df3d0">Toronto</text>
           </svg>
         </div>
         <div class="panel">
-          <h3><i class="ti ti-news" style="color:var(--link)"></i> Latest from Aurora</h3>
+          <h3>Latest from Aurora</h3>
           {latest.map((n) => {
             const tm = newsType[n.type] || newsType.note;
             const label = (n.type === 'paper' && n.venue) ? n.venue : tm.label;

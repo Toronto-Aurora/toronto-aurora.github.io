@@ -1,6 +1,63 @@
 {
-  "note": "Papers are those where an Aurora member is the first or second author, PLUS papers from Aurora-led JWST surveys (VENUS, led by S. Fujimoto; MINERVA, led by A. Muzzin), which are included regardless of author position and attributed to the survey lead. Authorship checked against the arXiv author list; 'venue' set only for papers confirmed published. Links point to the ADS record. Do not add unverified papers, awards, figures, or venues.",
+  "note": "Papers are those where an Aurora member is the first or second author, PLUS papers from Aurora-led JWST surveys (VENUS, led by S. Fujimoto; MINERVA, led by A. Muzzin), which are included regardless of author position and attributed to the survey lead. Recent items prioritize member-first-author papers. Authorship checked against the arXiv author list; 'venue' set only for papers confirmed published; dates follow the arXiv posting, or the journal publication when that is the news event. Links point to the ADS record. Do not add unverified papers, awards, figures, or venues.",
   "items": [
+    {
+      "type": "paper",
+      "date": "2026-08",
+      "person": "Chloe Cheng",
+      "venue": "Nat. Astron.",
+      "title": "Hidden mass in early galaxies revealed by bottom-heavy initial mass functions",
+      "blurb": "Ultra-deep JWST/NIRSpec spectra of nine massive quiescent galaxies at z ≈ 0.7 reveal bottom-heavy stellar initial mass functions, an excess of low-mass stars that raises their inferred stellar masses.",
+      "url": "https://ui.adsabs.harvard.edu/abs/arXiv:2601.20864/abstract",
+      "figure": "/news/cheng-imf.jpg"
+    },
+    {
+      "type": "paper",
+      "date": "2026-07",
+      "person": "Yoshihisa Asada",
+      "survey": "VENUS",
+      "title": "VENUS: an ultra-faint galaxy hosting the metal-poor Type II supernova at z = 5.13",
+      "blurb": "The first characterization of the host of the multiply imaged Type IIP supernova SN Eos at z = 5.13, where a total magnification of about 53 lets the team resolve the supernova's local environment inside an ultra-faint early galaxy.",
+      "url": "https://ui.adsabs.harvard.edu/abs/arXiv:2607.14355/abstract",
+      "figure": "/news/asada-sneos.jpg"
+    },
+    {
+      "type": "paper",
+      "date": "2026-07",
+      "person": "Ting Li",
+      "title": "Boötes III is a tidally disrupting ultra-faint dwarf galaxy on an eccentric polar orbit",
+      "blurb": "Twenty-one member stars show that Boötes III is an ultra-faint dwarf galaxy being tidally disrupted on a highly eccentric polar orbit, caught about 0.14 Gyr after its latest pericentric passage.",
+      "url": "https://ui.adsabs.harvard.edu/abs/arXiv:2607.07803/abstract",
+      "figure": "/news/li-bootes3.jpg"
+    },
+    {
+      "type": "paper",
+      "date": "2026-06",
+      "person": "Chloe Cheng",
+      "venue": "A&A",
+      "title": "Clues to inside-out quenching in quiescent galaxies at 1.2 ≲ z ≲ 2.2: age, Fe-, and Mg-abundances",
+      "blurb": "Spatially resolved ages and abundances in eight massive quiescent galaxies at 1.2 ≲ z ≲ 2.2 show cores that are older, and possibly Mg-poor, compared to their outskirts, supporting inside-out quenching.",
+      "url": "https://ui.adsabs.harvard.edu/abs/arXiv:2509.12316/abstract",
+      "figure": "/news/cheng-quenching.jpg"
+    },
+    {
+      "type": "paper",
+      "date": "2026-04",
+      "person": "Pratika Dayal",
+      "title": "Light, heavy, primordial: exploring the diversity of black hole seeding and growth mechanisms in the JWST era",
+      "blurb": "A unified comparison of light, heavy, and primordial black hole seeding and growth channels against the JWST census of early massive black holes, including the over-massive systems found in metal-poor hosts.",
+      "url": "https://ui.adsabs.harvard.edu/abs/arXiv:2604.20966/abstract",
+      "figure": "/news/dayal-seeds.jpg"
+    },
+    {
+      "type": "paper",
+      "date": "2025-07",
+      "person": "Will McClymont",
+      "title": "The THESAN-ZOOM project: Mystery N/O more – uncovering the origin of peculiar chemical abundances and a not-so-fundamental metallicity relation at 3 < z < 12",
+      "blurb": "THESAN-ZOOM simulations show smoothly curved mass-metallicity relations already in place at z ≈ 12, governed by how well galaxies retain their metals, while the fundamental metallicity relation inverts for gas in low-mass galaxies.",
+      "url": "https://ui.adsabs.harvard.edu/abs/arXiv:2507.08787/abstract",
+      "figure": "/news/mcclymont-mzr.jpg"
+    },
     {
       "type": "paper",
       "date": "2026-04",
