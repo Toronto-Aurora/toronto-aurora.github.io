@@ -170,6 +170,11 @@ img { max-width: 100%; display: block; }
 .qcard p { color: var(--ink-2); font-size: 14px; }
 
 /* coordinators */
+/* ---------- group photo ---------- */
+.group-photo { margin: 0 0 44px; }
+.group-photo img { width: 100%; height: auto; display: block; border: 1px solid var(--line); border-radius: 16px; }
+.group-photo figcaption { color: var(--ink-3); font-size: 12.5px; margin-top: 10px; }
+
 .coord-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
 .coord { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 26px 18px; display: flex; flex-direction: column; align-items: center; text-align: center; transition: transform .15s, box-shadow .15s; }
 .coord:hover { transform: translateY(-3px); box-shadow: 0 10px 26px rgba(20, 33, 73, .1); }
