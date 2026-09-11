@@ -63,6 +63,15 @@
           "orcid": "0000-0002-4542-921X"
         },
         {
+          "name": "Anna Sajina",
+          "affil": "Astronomy & Astrophysics, U of T",
+          "pillar": "observation",
+          "focus": "Dust-obscured galaxies and AGN through infrared observations.",
+          "link": "https://as.tufts.edu/physics/people/faculty/anna-sajina",
+          "photo": "/people/sajina.jpg",
+          "orcid": "0000-0002-1917-1200"
+        },
+        {
           "name": "Rahul Kannan",
           "affil": "Physics & Astronomy, York University",
           "pillar": "theory",
@@ -155,15 +164,6 @@
           "link": "https://www.asiaa.sinica.edu.tw/people/cv.php?i=pen",
           "photo": "/people/pen.jpg",
           "orcid": "0000-0003-2155-9578"
-        },
-        {
-          "name": "Anna Sajina",
-          "affil": "Astronomy & Astrophysics, U of T",
-          "pillar": "observation",
-          "focus": "Dust-obscured galaxies and AGN through infrared observations.",
-          "link": "https://as.tufts.edu/physics/people/faculty/anna-sajina",
-          "photo": "/people/sajina.jpg",
-          "orcid": "0000-0002-1917-1200"
         }
       ]
     },
