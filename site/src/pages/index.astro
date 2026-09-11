@@ -22,8 +22,8 @@ const initials = (n) => n.split(/\s+/).filter(Boolean).slice(0, 2).map((w) => w[
 
 const visitorOffer = { icon: 'ti-plane', title: 'Visitor program', desc: 'Funded short-term visits to Toronto for collaborators and trainees.', cls: 'blue', href: '/programs#visitors' };
 const postdocOffers = [
-  { icon: 'ti-calendar-plus', title: '+1 year top-up', desc: 'A funded third year added to eligible two-year fellowships.', cls: 'violet', href: '/programs#extension' },
-  { icon: 'ti-arrows-exchange', title: 'Co-mentorship', desc: 'Two mentors from different pillars for every trainee.', cls: 'teal', href: '/programs#co-mentorship' },
+  { icon: 'ti-calendar-plus', title: '+1 year top-up', desc: 'A funded third year for two-year fellows, where we can arrange it.', cls: 'violet', href: '/programs#extension' },
+  { icon: 'ti-arrows-exchange', title: 'Co-mentorship', desc: 'A second mentor from another pillar, if you want one.', cls: 'teal', href: '/programs#co-mentorship' },
   { icon: 'ti-stairs-up', title: 'Career support', desc: 'Dual mentoring, training, and placement.', cls: 'amber', href: '/programs#career' },
 ];
 
@@ -71,7 +71,7 @@ const latest = [...news.items].sort((a, b) => (a.date < b.date ? 1 : -1)).slice(
         <div class="section-head" style="margin-bottom:0;">
           <div class="kicker">Our mission</div>
           <h2>Understanding the Universe's first billion years</h2>
-          <p>JWST has pushed direct observation into the first billion years after the Big Bang, and much of what it found there was not predicted, from galaxies at z &gt; 10 to black holes that grew faster than the models allow. Aurora works on this period from three directions at once: <strong>observation, theory, and data science</strong>. The initiative connects 28 researchers at the University of Toronto and York University, most of them within a few blocks of each other.</p>
+          <p>JWST has pushed direct observation into the first billion years after the Big Bang, and much of what it found there was not predicted, from galaxies at z &gt; 10 to black holes that grew faster than the models allow. Aurora works on this period from three directions at once: <strong>observation, theory, and data science</strong>. The initiative connects researchers at the University of Toronto and York University, most of them within a few blocks of each other.</p>
         </div>
         <div class="mission-brand">
           <img src="/aurora-logo-black.png" alt="Aurora Initiative" width="1100" height="203" style="width:100%;max-width:480px;height:auto;display:block" />
