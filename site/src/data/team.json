@@ -1,5 +1,5 @@
 {
-  "note": "Faculty affiliations and one-line foci verified from official pages (June 2026); headshots hosted locally under public/people (confirm consent before launch). A. Sajina is joining U of T (Astronomy & Astrophysics) from Tufts; U.-L. Pen (ASIAA primary) is external-affiliated faculty. Postdoc list provided by the team (includes members arriving fall 2026).",
+  "note": "Faculty affiliations and one-line foci verified from official pages (June 2026); headshots hosted locally under public/people (confirm consent before launch). A. Sajina is joining U of T (Astronomy & Astrophysics) from Tufts; U.-L. Pen (ASIAA primary) is external-affiliated faculty. Postdoc list provided by the team (includes members arriving fall 2026). C. Cho (York-MIT Fellow with R. Kannan) and S. Modak (CITA Fellow, joint with Flatiron CCA, from fall 2026) verified from ORCID and personal pages; not yet on their institutional directories at the time of adding.",
   "tiers": [
     {
       "id": "coordinators",
@@ -283,6 +283,24 @@
           "link": "https://gannonjs.github.io/",
           "photo": "/people/gannon.jpg",
           "orcid": "0000-0002-2936-7805"
+        },
+        {
+          "name": "Changhyun Cho",
+          "affil": "York-MIT Fellow, York University",
+          "pillar": "theory",
+          "focus": "Cosmological simulations of galaxy formation and feedback, with statistical methods for interpreting them.",
+          "link": "https://orcid.org/0000-0002-9879-1749",
+          "photo": "/people/cho.jpg",
+          "orcid": "0000-0002-9879-1749"
+        },
+        {
+          "name": "Shaunak Modak",
+          "affil": "CITA Fellow, U of T",
+          "pillar": "theory",
+          "focus": "Theory of orbital transport and heating in galactic disks, driven by stars and the interstellar medium.",
+          "link": "https://shaunakmodak.github.io/",
+          "photo": "/people/modak.jpg",
+          "orcid": "0000-0002-8532-827X"
         }
       ]
     }
