@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!-- Template: deploy.sh replaces __HOME__. Logs and working directory stay outside
+     CloudStorage, otherwise launchd fails the job with EX_CONFIG (78). -->
+<plist version="1.0">
+<dict>
+  <key>Label</key><string>com.sfseiji.aurora-news-weekly</string>
+  <key>ProgramArguments</key>
+  <array>
+    <string>/opt/miniconda3/bin/python3</string>
+    <string>__HOME__/.local/share/aurora_news/weekly_check.py</string>
+  </array>
+  <key>StartCalendarInterval</key>
+  <dict>
+    <key>Weekday</key><integer>1</integer>
+    <key>Hour</key><integer>7</integer>
+    <key>Minute</key><integer>30</integer>
+  </dict>
+  <key>RunAtLoad</key><false/>
+  <key>WorkingDirectory</key><string>__HOME__</string>
+  <key>StandardOutPath</key><string>__HOME__/Library/Logs/aurora_news.log</string>
+  <key>StandardErrorPath</key><string>__HOME__/Library/Logs/aurora_news.log</string>
+  <key>EnvironmentVariables</key>
+  <dict>
+    <key>PATH</key><string>/opt/miniconda3/bin:/usr/bin:/bin:/usr/sbin:/sbin</string>
+    <key>TZ</key><string>America/Toronto</string>
+    <key>PYTHONUNBUFFERED</key><string>1</string>
+  </dict>
+  <key>ProcessType</key><string>Background</string>
+</dict>
+</plist>
