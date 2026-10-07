@@ -4,7 +4,7 @@
     {
       "id": "coordinators",
       "title": "Coordinators",
-      "blurb": "One coordinator from each of DADDAA, CITA, York, and Statistical Sciences, spanning both universities and all three pillars. Coordinators are also faculty.",
+      "blurb": "The four coordinators are faculty members, one each from DADDAA, CITA, York, and Statistical Sciences.",
       "members": [
         {
           "name": "Seiji Fujimoto",
@@ -170,7 +170,7 @@
     {
       "id": "postdocs",
       "title": "Postdoctoral fellows",
-      "blurb": "Aurora's early-career core, including members arriving in fall 2026.",
+      "blurb": "Aurora postdoctoral fellows, including members who arrived in fall 2026.",
       "members": [
         {
           "name": "Yoshihisa Asada",

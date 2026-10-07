@@ -7,9 +7,9 @@ import news from '../data/news.json';
 import world from '../data/world.geo.json';
 
 const mysteries = [
-  { z: 'z ≳ 10', cls: 'teal', motif: 'galaxy', title: 'First stars, black holes, and galaxies', d: 'The earliest luminous objects, revealed by JWST at z > 10, defy models of how the first stars, galaxies, and black holes formed and grew.' },
-  { z: 'z ≳ 7', cls: 'violet', motif: 'bh', title: 'Early supermassive black holes', d: 'Supermassive black holes appear within a few hundred million years of the Big Bang, demanding new theories of seeding and rapid growth.' },
-  { z: 'z ≈ 6–10', cls: 'blue', motif: 'reion', title: 'Cosmic reionization', d: 'Radiation from the first sources reionized the intergalactic medium, but its timing, topology, and drivers remain open.' },
+  { z: 'z ≳ 10', cls: 'teal', motif: 'galaxy', title: 'The first luminous objects', d: 'JWST observations at z > 10 disagree with models of how the first stars and galaxies formed and how black holes grew.' },
+  { z: 'z ≳ 7', cls: 'violet', motif: 'bh', title: 'Early supermassive black holes', d: 'Models of black hole seeding and growth have to account for supermassive black holes seen within a few hundred million years of the Big Bang.' },
+  { z: 'z ≈ 6–10', cls: 'blue', motif: 'reion', title: 'Cosmic reionization', d: 'Radiation from the first sources reionized the intergalactic medium. When it happened, how it spread, and which sources drove it are still uncertain.' },
 ];
 const motif = {
   galaxy: '<svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2.6"><ellipse cx="50" cy="52" rx="34" ry="15" transform="rotate(24 50 52)"/><ellipse cx="50" cy="52" rx="20" ry="8.5" transform="rotate(24 50 52)"/><circle cx="50" cy="52" r="4.5" fill="currentColor" stroke="none"/><path d="M22 12 L23.6 16.2 L27.8 17.8 L23.6 19.4 L22 23.6 L20.4 19.4 L16.2 17.8 L20.4 16.2 Z" fill="currentColor" stroke="none"/></svg>',
@@ -22,9 +22,9 @@ const initials = (n) => n.split(/\s+/).filter(Boolean).slice(0, 2).map((w) => w[
 
 const visitorOffer = { icon: 'ti-plane', title: 'Visitor program', desc: 'Funded short-term visits to Toronto for collaborators and trainees.', cls: 'blue', href: '/programs#visitors' };
 const postdocOffers = [
-  { icon: 'ti-calendar-plus', title: '+1 year top-up', desc: 'A funded third year for two-year fellows, where we can arrange it.', cls: 'violet', href: '/programs#extension' },
-  { icon: 'ti-arrows-exchange', title: 'Co-mentorship', desc: 'A second mentor from another pillar, if you want one.', cls: 'teal', href: '/programs#co-mentorship' },
-  { icon: 'ti-stairs-up', title: 'Career support', desc: 'Dual mentoring, professional development, and chances to mentor students.', cls: 'amber', href: '/programs#career' },
+  { icon: 'ti-calendar-plus', title: '+1 year top-up', desc: 'A funded third year for two-year fellows when funding allows.', cls: 'violet', href: '/programs#extension' },
+  { icon: 'ti-arrows-exchange', title: 'Co-mentorship', desc: 'A mentor from another pillar, on request.', cls: 'teal', href: '/programs#co-mentorship' },
+  { icon: 'ti-stairs-up', title: 'Career support', desc: 'Dual mentoring and professional development, with opportunities to mentor students.', cls: 'amber', href: '/programs#career' },
 ];
 
 const MW = 720, MH = 360;
@@ -69,7 +69,7 @@ const latest = [...news.items].sort((a, b) => (a.date < b.date ? 1 : -1)).slice(
     <div class="wrap">
       <div class="mission-head">
         <div class="section-head" style="margin-bottom:0;">
-          <div class="kicker">Our mission</div>
+          <div class="kicker">Science</div>
           <h2>Understanding the Universe's first billion years</h2>
           <p>JWST has pushed direct observation into the first billion years after the Big Bang, and much of what it found there was not predicted, from galaxies at z &gt; 10 to black holes that grew faster than the models allow. Aurora works on this period from three directions at once: <strong>observation, theory, and data science</strong>. The initiative connects researchers at the University of Toronto and York University, most of them within a few blocks of each other.</p>
         </div>
@@ -102,7 +102,7 @@ const latest = [...news.items].sort((a, b) => (a.date < b.date ? 1 : -1)).slice(
       <div class="section-head">
         <div class="kicker">People</div>
         <h2>Coordinators</h2>
-        <p>Four coordinators, one from each of DADDAA, CITA, York, and Statistical Sciences. Between them they cover both universities and all three pillars.</p>
+        <p>Four coordinators, one each from DADDAA, CITA, York and Statistical Sciences, covering both universities and all three pillars.</p>
       </div>
       <div class="coord-grid">
         {coordinators.map((m) => (
@@ -124,13 +124,13 @@ const latest = [...news.items].sort((a, b) => (a.date < b.date ? 1 : -1)).slice(
   <section class="section" id="offer" style="padding-top:0;">
     <div class="wrap">
       <div class="section-head">
-        <div class="kicker">Support</div>
-        <h2>What Aurora offers</h2>
-        <p>The practical reasons to come to Toronto, in place from the day you arrive.</p>
+        <div class="kicker">Programs</div>
+        <h2>Funding and mentoring</h2>
+        <p>Support for research visits and postdoctoral work in Toronto.</p>
       </div>
 
       <div class="offer-group">
-        <div class="og-kicker">For all researchers</div>
+        <div class="og-kicker">For visitors</div>
         <a class="feature-card" href={visitorOffer.href}>
           <span class="offer-ic" style={`background:var(--pill-${visitorOffer.cls}-bg);color:var(--pill-${visitorOffer.cls}-fg)`}><i class={`ti ${visitorOffer.icon}`}></i></span>
           <span class="fc-body">
@@ -163,7 +163,7 @@ const latest = [...news.items].sort((a, b) => (a.date < b.date ? 1 : -1)).slice(
       <div class="net-grid">
         <div class="panel">
           <h3>Collaborators around the world</h3>
-          <p class="psub">Institutions where Aurora members have active collaborators, drawn from the team's current projects.</p>
+          <p class="psub">Institutions where members have active collaborators on current projects.</p>
           <svg class="netmap" viewBox="0 40 720 250" role="img" aria-label="World map of collaborator locations centered on Toronto">
             <rect x="0" y="40" width="720" height="250" rx="12" fill="#0b1330" />
             <g fill="#1c294c" fill-rule="evenodd">
@@ -177,7 +177,7 @@ const latest = [...news.items].sort((a, b) => (a.date < b.date ? 1 : -1)).slice(
           </svg>
         </div>
         <div class="panel">
-          <h3>Latest from Aurora</h3>
+          <h3>News</h3>
           {latest.map((n) => {
             const tm = newsType[n.type] || newsType.note;
             const label = (n.type === 'paper' && n.venue) ? n.venue : tm.label;
