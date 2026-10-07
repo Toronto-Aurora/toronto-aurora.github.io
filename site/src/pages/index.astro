@@ -59,7 +59,7 @@ const newsType = {
   award: { label: 'Award', cls: 'amber', icon: 'ti-award' },
   note: { label: 'News', cls: 'blue', icon: 'ti-sparkles' },
 };
-const latest = [...news.items].sort((a, b) => (a.date < b.date ? 1 : -1)).slice(0, 4);
+const latest = [...news.items].sort((a, b) => b.date.localeCompare(a.date)).slice(0, 4);
 ---
 <Base>
   <Hero />

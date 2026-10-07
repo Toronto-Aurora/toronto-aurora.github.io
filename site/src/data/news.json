@@ -3,6 +3,110 @@
   "items": [
     {
       "type": "paper",
+      "date": "2026-09",
+      "person": "Seiji Fujimoto",
+      "title": "SN Helios: a multiply imaged Type II supernova opening time-delay cosmography beyond redshift of 3",
+      "blurb": "JWST imaging from the VENUS survey and a NIRSpec prism spectrum identify SN Helios as a multiply imaged Type II supernova at z = 3.34, with another image predicted within about 2–6 years for a time-delay measurement of H₀.",
+      "url": "https://ui.adsabs.harvard.edu/abs/arXiv:2609.30440/abstract",
+      "figure": "/news/fujimoto-snhelios.jpg"
+    },
+    {
+      "type": "paper",
+      "date": "2026-09",
+      "person": "Seiji Fujimoto",
+      "title": "A tidal disruption event in a quasar at redshift 7.19",
+      "blurb": "More than two decades of HST, Spitzer, and JWST imaging reveal a long-lived nuclear transient in the red quasar GNz7q at z = 7.19 that points to the tidal disruption of a star of a few solar masses.",
+      "url": "https://ui.adsabs.harvard.edu/abs/arXiv:2609.30441/abstract",
+      "figure": "/news/fujimoto-gnz7q-tde.jpg"
+    },
+    {
+      "type": "paper",
+      "date": "2026-09",
+      "person": "Qinyue Fei",
+      "title": "A dense, metal-rich absorber driven by a heavily dust-obscured galaxy: the direct evidence of CGM enrichment at z ∼ 7",
+      "blurb": "JWST and NOEMA link a dense, metal-enriched absorber at z = 7.03 to ND1, a heavily dust-obscured starburst about 16 kpc from the quasar sightline whose 64 M⊙ yr⁻¹ outflow appears to carry metals into its halo.",
+      "url": "https://ui.adsabs.harvard.edu/abs/arXiv:2609.17680/abstract",
+      "figure": "/news/fei-absorber.jpg"
+    },
+    {
+      "type": "paper",
+      "date": "2026-09",
+      "person": "Yoshihisa Asada",
+      "title": "Early steps in the hierarchical assembly of a Milky Way-mass galaxy 1 Gyr after the Big Bang",
+      "blurb": "JWST spectra of three interacting, lensed low-mass galaxies at z = 5.196, expected to grow into a Milky Way-mass galaxy, suggest intense star-forming bursts boost their stellar mass growth to 2.6 ± 0.5 times that of merging alone.",
+      "url": "https://ui.adsabs.harvard.edu/abs/arXiv:2609.19687/abstract",
+      "figure": "/news/asada-mwprogenitor.jpg"
+    },
+    {
+      "type": "paper",
+      "date": "2026-09",
+      "person": "Seiji Fujimoto",
+      "survey": "VENUS",
+      "title": "A sub-100 pc view at z ∼ 5 of a multiply-imaged massive quiescent galaxy",
+      "blurb": "VENUS NIRCam imaging of the lensed post-starburst galaxy VENUS-CLJ0152-QG1 at z ≈ 5.2 reaches about 70 pc resolution and reveals a size twice that expected and a low central density, pointing to quenching without compaction.",
+      "url": "https://ui.adsabs.harvard.edu/abs/arXiv:2609.28474/abstract",
+      "figure": "/news/venus-cl0152-qg.jpg"
+    },
+    {
+      "type": "paper",
+      "date": "2026-09",
+      "person": "Adam Muzzin",
+      "title": "A systematic assessment of total stellar mass measurements with spatially resolved photometry and medium bands at 1 < z < 9",
+      "blurb": "Resolved JWST and HST photometry of about 3000 galaxies at 1 < z < 9 shows that integrated photometry underestimates stellar masses, by a median of about 0.36 dex in galaxies with high specific star formation rates, consistent with outshining.",
+      "url": "https://ui.adsabs.harvard.edu/abs/arXiv:2609.35996/abstract",
+      "figure": "/news/jagga-resolvedmass.jpg"
+    },
+    {
+      "type": "paper",
+      "date": "2026-09",
+      "person": "Jonah Gannon",
+      "venue": "MNRAS",
+      "title": "Distance estimation using globular clusters and ultra-compact dwarfs",
+      "blurb": "A bilinear relation between absolute magnitude and dynamical mass for globular clusters and ultra-compact dwarfs gives per-object distance uncertainties of about 30–35% and places the debated dwarf galaxy NGC1052-DF2 at 19.1 ± 4.3 Mpc.",
+      "url": "https://ui.adsabs.harvard.edu/abs/arXiv:2609.27432/abstract",
+      "figure": "/news/gannon-gcvd.jpg"
+    },
+    {
+      "type": "paper",
+      "date": "2026-09",
+      "person": "Josh Speagle",
+      "title": "Model predictive scoring shows specific BAO observations (not SNIa) drives w₀wₐ tension",
+      "blurb": "Scoring ΛCDM and w₀wₐCDM by how well each predicts held-out data traces the modest preference for evolving dark energy to a single DESI BAO measurement at z = 0.706, while the supernova datasets show no preference.",
+      "url": "https://ui.adsabs.harvard.edu/abs/arXiv:2609.04334/abstract",
+      "figure": "/news/karim-elpd.jpg"
+    },
+    {
+      "type": "paper",
+      "date": "2026-09",
+      "person": "Suresh Sivanandam",
+      "venue": "Proc. SPIE",
+      "title": "The second Little UV Camera (LUVCam2) mission",
+      "blurb": "LUVCam2, an 80 mm dual ultraviolet-optical telescope designed to observe UV flares from low-mass stars, is planned to fly on the CubeSat BRNOsat in late 2027 with a backside-illuminated CMOS sensor for higher UV quantum efficiency.",
+      "url": "https://ui.adsabs.harvard.edu/abs/arXiv:2609.26589/abstract",
+      "figure": "/news/sivanandam-luvcam2.jpg"
+    },
+    {
+      "type": "paper",
+      "date": "2026-09",
+      "person": "Suresh Sivanandam",
+      "venue": "Proc. SPIE",
+      "title": "A report on the first technology demonstration mission of the Little UV Camera (LUVCam1)",
+      "blurb": "LUVCam1, a 0.4U payload on the 2U cubesat GRBBeta launched in July 2024, tests the GSENSE4040 CMOS sensor in orbit ahead of the QUVIK ultraviolet mission and remains operational two years later.",
+      "url": "https://ui.adsabs.harvard.edu/abs/arXiv:2609.21252/abstract",
+      "figure": "/news/sivanandam-luvcam1.jpg"
+    },
+    {
+      "type": "paper",
+      "date": "2026-09",
+      "person": "Ting Li",
+      "venue": "Proc. SPIE",
+      "title": "Automated multi-stressor optical fiber focal ratio degradation and throughput characterization system",
+      "blurb": "An automated test bench measures focal ratio degradation and throughput of optical fibers under varied input angle, wavelength, bending, twist, and load, built for future survey facilities such as Spec-S5 and WST with more than 25,000 fibers.",
+      "url": "https://ui.adsabs.harvard.edu/abs/arXiv:2610.00507/abstract",
+      "figure": "/news/li-fiberfrd.jpg"
+    },
+    {
+      "type": "paper",
       "date": "2026-08",
       "person": "Chloe Cheng",
       "venue": "Nat. Astron.",
@@ -10,6 +114,43 @@
       "blurb": "Ultra-deep JWST/NIRSpec spectra of nine massive quiescent galaxies at z ≈ 0.7 reveal bottom-heavy stellar initial mass functions, an excess of low-mass stars that raises their inferred stellar masses.",
       "url": "https://ui.adsabs.harvard.edu/abs/arXiv:2601.20864/abstract",
       "figure": "/news/cheng-imf.jpg"
+    },
+    {
+      "type": "paper",
+      "date": "2026-08",
+      "person": "Ava Polzin",
+      "title": "The low-mass baryon cycle in QUEST dwarf galaxies I: sample definition and first results",
+      "blurb": "The first-release QUEST Dwarfs sample of 14 galaxies indicates that chemically enriched cool gas is concentrated in the inner circumgalactic medium, where it holds ≈3% and ≈16% of the metals produced by lower- and higher-mass dwarfs.",
+      "url": "https://ui.adsabs.harvard.edu/abs/arXiv:2608.15782/abstract",
+      "figure": "/news/polzin-questdwarfs.jpg"
+    },
+    {
+      "type": "paper",
+      "date": "2026-08",
+      "person": "Saiyang Zhang",
+      "title": "The road to normalcy: environment-driven evolutionary pathways for primordial black holes",
+      "blurb": "Hydrodynamical simulations show that primordial black hole seeds follow environment-dependent pathways, forming faint, metal-poor systems in underdense regions and growing rapidly in overdense ones, with compact sources resembling Little Red Dots appearing as one evolutionary phase.",
+      "url": "https://ui.adsabs.harvard.edu/abs/arXiv:2608.23498/abstract",
+      "figure": "/news/zhang-pbh.jpg"
+    },
+    {
+      "type": "paper",
+      "date": "2026-08",
+      "person": "Roberto Abraham",
+      "venue": "Nature",
+      "title": "Numerous bow shocks in the outer Helix Nebula",
+      "blurb": "Hα imaging with the partially completed MOTHRA telescope finds twenty-two compact bow shocks around gas clumps in the outer Helix Nebula, which the team interprets as AGB-shell fragments stripped by the interstellar medium and losing coherence within about 10,000 years.",
+      "url": "https://ui.adsabs.harvard.edu/abs/arXiv:2608.11443/abstract",
+      "figure": "/news/abraham-helix.jpg"
+    },
+    {
+      "type": "paper",
+      "date": "2026-08",
+      "person": "Josh Speagle",
+      "title": "EncoTESS: age-sensitive encodings from raw TESS light curves",
+      "blurb": "EncoTESS, a compact time-series foundation model trained on TESS 2-minute light curves, turns raw stellar variability into encodings that track age better than rotation period or variability amplitude for young K and M stars.",
+      "url": "https://ui.adsabs.harvard.edu/abs/arXiv:2608.25019/abstract",
+      "figure": "/news/vanlane-encotess.jpg"
     },
     {
       "type": "paper",
@@ -35,7 +176,7 @@
       "date": "2026-06",
       "person": "Chloe Cheng",
       "venue": "A&A",
-      "title": "Clues to inside-out quenching in quiescent galaxies at 1.2 ≲ z ≲ 2.2: age, Fe-, and Mg-abundances",
+      "title": "Clues to inside-out quenching in quiescent galaxies at 1.2 ≲ z ≲ 2.2: age, Fe-, and Mg-abundance gradients from JWST-SUSPENSE",
       "blurb": "Spatially resolved ages and abundances in eight massive quiescent galaxies at 1.2 ≲ z ≲ 2.2 show cores that are older, and possibly Mg-poor, compared to their outskirts, supporting inside-out quenching.",
       "url": "https://ui.adsabs.harvard.edu/abs/arXiv:2509.12316/abstract",
       "figure": "/news/cheng-quenching.jpg"
@@ -53,6 +194,7 @@
       "type": "paper",
       "date": "2025-07",
       "person": "Will McClymont",
+      "venue": "MNRAS",
       "title": "The THESAN-ZOOM project: Mystery N/O more – uncovering the origin of peculiar chemical abundances and a not-so-fundamental metallicity relation at 3 < z < 12",
       "blurb": "THESAN-ZOOM simulations show smoothly curved mass-metallicity relations already in place at z ≈ 12, governed by how well galaxies retain their metals, while the fundamental metallicity relation inverts for gas in low-mass galaxies.",
       "url": "https://ui.adsabs.harvard.edu/abs/arXiv:2507.08787/abstract",
@@ -62,8 +204,9 @@
       "type": "paper",
       "date": "2026-04",
       "person": "Jose Maria Palencia",
-      "title": "First statistical study of over 100 magnified stellar events at z ≈ 0.72 with JWST",
-      "blurb": "The first statistical sample of over 100 highly magnified individual stars at z ≈ 0.72, detected with JWST as microlensing transients near galaxy-cluster critical curves, opening a new probe of distant stellar populations and small-scale dark matter.",
+      "venue": "A&A",
+      "title": "First statistical study of over 100 magnified stellar events at redshift z ≈ 0.725 with JWST",
+      "blurb": "More than 100 magnified stellar events in the lensed Dragon galaxy at z ≈ 0.725, found in three cycles of JWST imaging behind Abell 370, constrain the bright end of the stellar luminosity function and trace the cluster's critical curves.",
       "url": "https://ui.adsabs.harvard.edu/abs/arXiv:2604.22702/abstract",
       "figure": "/news/palencia-stars.jpg"
     },
@@ -71,6 +214,7 @@
       "type": "paper",
       "date": "2026-03",
       "person": "Nasser Mohammed",
+      "venue": "ApJ",
       "title": "The kinematically hot, extremely metal-poor C-19 stellar stream in DESI DR2",
       "blurb": "Using DESI DR2 radial velocities and metallicities to characterize the C-19 stream, whose large velocity dispersion is hard to explain with a purely baryonic, disrupting globular-cluster progenitor.",
       "url": "https://ui.adsabs.harvard.edu/abs/arXiv:2603.11171/abstract",
@@ -90,8 +234,9 @@
       "type": "paper",
       "date": "2026-02",
       "person": "Seiji Fujimoto",
+      "venue": "ApJ",
       "survey": "VENUS",
-      "title": "VENUS: a strong-lensing model of MACS J1931.8-2635 and the farthest multiply imaged supernova",
+      "title": "VENUS: strong-lensing model of MACS J1931.8-2635 – revealing the farthest multiply imaged supernova",
       "blurb": "A strong-lensing model of the cluster MACS J1931.8-2635 from the JWST VENUS survey, accompanying the spectroscopically confirmed supernova SN Eos at z = 5.13 and revealing new multiply imaged systems.",
       "url": "https://ui.adsabs.harvard.edu/abs/arXiv:2602.14074/abstract",
       "figure": "/news/venus-macsj1931.jpg"
@@ -100,8 +245,8 @@
       "type": "paper",
       "date": "2026-01",
       "person": "Jose Maria Palencia",
-      "title": "A new free-form lens model of AS1063 from ultra-deep GLIMPSE imaging",
-      "blurb": "A new free-form lens model of the cluster AS1063 built from spectroscopically confirmed lensed galaxies and ultra-deep GLIMPSE imaging, which confirms and uncovers new lensed systems including a yellow-supergiant candidate at z ≈ 3.",
+      "title": "Hedorah, the first yellow supergiant Kaiju star candidate at z = 3.7 revealed by JWST behind AS1063",
+      "blurb": "A new free-form lens model of the cluster AS1063, built from spectroscopically confirmed lensed galaxies and ultra-deep GLIMPSE imaging, also turns up Hedorah, a lensed yellow-supergiant star candidate at z ≈ 3.7.",
       "url": "https://ui.adsabs.harvard.edu/abs/arXiv:2601.11704/abstract",
       "figure": "/news/palencia-as1063.jpg"
     },
@@ -111,8 +256,8 @@
       "person": "Seiji Fujimoto",
       "survey": "VENUS",
       "venue": "A&A",
-      "title": "VENUS: a multiply imaged Little Red Dot with an apparent blue component behind Abell 383",
-      "blurb": "A doubly-imaged Little Red Dot candidate (A383-LRD1) behind the cluster Abell 383, showing an apparent blue component, from the JWST VENUS survey.",
+      "title": "VENUS: when red meets blue – a multiply imaged Little Red Dot with an apparent blue companion behind the galaxy cluster Abell 383",
+      "blurb": "A doubly-imaged Little Red Dot candidate (A383-LRD1) behind the cluster Abell 383, with an apparent compact blue companion, from the JWST VENUS survey.",
       "url": "https://ui.adsabs.harvard.edu/abs/arXiv:2512.02117/abstract",
       "figure": "/news/venus-redblue.jpg"
     },
@@ -130,7 +275,8 @@
       "type": "paper",
       "date": "2025-10",
       "person": "Seiji Fujimoto",
-      "title": "The ALPINE-CRISTAL-JWST Survey: JWST/IFU optical observations of 18 main-sequence galaxies at z = 4–6",
+      "venue": "ApJS",
+      "title": "The ALPINE-CRISTAL-JWST Survey: JWST/IFU optical observations for 18 main-sequence galaxies at z = 4–6",
       "blurb": "The ALPINE-CRISTAL-JWST survey combines kpc-resolved HST, JWST, and ALMA imaging and spectroscopy of 18 main-sequence galaxies at z = 4–6 to resolve their stars, gas, and dust together.",
       "url": "https://ui.adsabs.harvard.edu/abs/arXiv:2510.16111/abstract",
       "figure": "/news/fujimoto-alpine.jpg"

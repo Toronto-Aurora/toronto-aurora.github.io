@@ -8,7 +8,7 @@ const typeMeta = {
   award: { label: 'Award', cls: 'amber', icon: 'ti-award' },
   note: { label: 'News', cls: 'blue', icon: 'ti-sparkles' },
 };
-const items = [...news.items].sort((a, b) => (a.date < b.date ? 1 : -1));
+const items = [...news.items].sort((a, b) => b.date.localeCompare(a.date));
 const hay = (n) => [n.title, n.blurb, n.person, n.venue, n.venue ? 'published' : (n.type === 'paper' ? 'preprint' : ''), (typeMeta[n.type] || {}).label].filter(Boolean).join(' ').toLowerCase();
 ---
 <Base title="News — Aurora Initiative" description="Recent papers with an Aurora member as first or second author, and papers from the Aurora-led VENUS and MINERVA JWST surveys.">
