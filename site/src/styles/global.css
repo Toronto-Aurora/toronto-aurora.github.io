@@ -154,8 +154,10 @@ img { max-width: 100%; display: block; }
 .section-head { max-width: 640px; margin-bottom: 36px; }
 .section-head h2 { font-size: clamp(25px, 3vw, 36px); margin: 10px 0 0; letter-spacing: 0; }
 .section-head p { color: var(--ink-2); font-size: 16px; margin: 14px 0 0; }
-.mission-head { display: grid; grid-template-columns: 1fr 1fr; align-items: stretch; gap: 40px; margin-bottom: 40px; }
-.mission-head .section-head { max-width: 720px; margin-bottom: 0; align-self: center; }
+.mission-head { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); align-items: stretch; gap: 40px; margin-bottom: 40px; }
+.mission-head .section-head { max-width: none; margin-bottom: 0; align-self: center; }
+.mission-head .section-head h2 { text-wrap: balance; }
+.mission-head .section-head p { max-width: 720px; }
 .mission-brand { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 16px 24px; }
 .mission-brand .mb-sub { color: var(--ink-2); font-size: 13px; margin-top: 12px; }
 @media (max-width: 900px) { .mission-head { grid-template-columns: 1fr; gap: 24px; } .mission-brand { padding: 8px 0; } }
