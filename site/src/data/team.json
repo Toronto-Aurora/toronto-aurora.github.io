@@ -1,5 +1,5 @@
 {
-  "note": "Faculty affiliations and one-line foci verified from official pages (June 2026); headshots hosted locally under public/people (confirm consent before launch). A. Sajina is joining U of T (Astronomy & Astrophysics) from Tufts; U.-L. Pen (ASIAA primary) is external-affiliated faculty. Postdoc list provided by the team (includes members arriving fall 2026). C. Cho (York-MIT Fellow with R. Kannan) and S. Modak (CITA Fellow, joint with Flatiron CCA, from fall 2026) verified from ORCID and personal pages; not yet on their institutional directories at the time of adding.",
+  "note": "Faculty affiliations and one-line foci verified from official pages (June 2026); headshots hosted locally under public/people (confirm consent before launch). A. Sajina is joining U of T (Astronomy & Astrophysics) from Tufts; U.-L. Pen (ASIAA primary) is external-affiliated faculty. Postdoc list provided by the team (includes members arriving fall 2026). C. Cho (York-MIT Fellow with R. Kannan) and S. Modak (CITA Fellow, joint with Flatiron CCA, from fall 2026) verified from ORCID and personal pages; not yet on their institutional directories at the time of adding. Graduate students are listed at their own request (opt-in replies to S. Fujimoto by email or Slack, October 2026), with affiliation, supervisors, interests, and photo as they supplied them. S. Modak's focus line updated at his request (October 2026).",
   "tiers": [
     {
       "id": "coordinators",
@@ -288,10 +288,89 @@
           "name": "Shaunak Modak",
           "affil": "CITA Fellow, U of T",
           "pillar": "theory",
-          "focus": "Theory of orbital transport and heating in galactic disks, driven by stars and the interstellar medium.",
+          "focus": "Galactic disk (chemo)dynamics, interstellar medium physics, and dynamical probes of dark matter.",
           "link": "https://shaunakmodak.github.io/",
           "photo": "/people/modak.jpg",
           "orcid": "0000-0002-8532-827X"
+        }
+      ]
+    },
+    {
+      "id": "students",
+      "title": "Graduate students",
+      "blurb": "Graduate students at U of T and York who collaborate through the initiative.",
+      "members": [
+        {
+          "name": "Adit Harin Edward",
+          "affil": "Physics & Astronomy, York University",
+          "supervisors": "Adam Muzzin and Jacqueline Antwi-Danso",
+          "pillar": "observation",
+          "focus": "Spatially resolved insights into the quenching of early massive quiescent galaxies.",
+          "link": "#",
+          "photo": "/people/edward.jpg"
+        },
+        {
+          "name": "Jingsong Guo",
+          "affil": "Astronomy & Astrophysics, U of T",
+          "supervisors": "Seiji Fujimoto",
+          "pillar": "observation",
+          "focus": "Observations of high-redshift AGN and galaxies.",
+          "link": "#",
+          "photo": "/people/guo.jpg"
+        },
+        {
+          "name": "Naadiyah Jagga",
+          "affil": "Physics & Astronomy, York University",
+          "supervisors": "Adam Muzzin",
+          "pillar": "observation",
+          "focus": "Galaxy formation and evolution through spatially resolved multiwavelength observations of high-redshift galaxies.",
+          "link": "#",
+          "photo": "/people/jagga.jpg"
+        },
+        {
+          "name": "Maya Merchant",
+          "affil": "Physics & Astronomy, York University",
+          "supervisors": "Adam Muzzin and Lamiya Mowla",
+          "pillar": "observation",
+          "focus": "Morphology of high-redshift galaxies with JWST.",
+          "link": "#",
+          "photo": "/people/merchant.jpg"
+        },
+        {
+          "name": "Ana Molina Colina",
+          "affil": "Physics & Astronomy, York University",
+          "supervisors": "Adam Muzzin",
+          "pillar": "observation",
+          "focus": "Star clusters and star formation.",
+          "link": "#",
+          "photo": "/people/molinacolina.jpg"
+        },
+        {
+          "name": "Katherine Myers",
+          "affil": "Physics & Astronomy, York University",
+          "supervisors": "Adam Muzzin",
+          "pillar": "observation",
+          "focus": "Spatially resolved star formation and star-forming clumps.",
+          "link": "#",
+          "photo": "/people/myers.jpg"
+        },
+        {
+          "name": "Ghassan Sarrouh",
+          "affil": "Physics & Astronomy, York University (CU Boulder from January 2027)",
+          "supervisors": "Adam Muzzin",
+          "pillar": "observation",
+          "focus": "Stellar mass assembly and stellar mass functions in the first billion years.",
+          "link": "#",
+          "photo": "/people/sarrouh.jpg"
+        },
+        {
+          "name": "Lily Han Zhang",
+          "affil": "Astronomy & Astrophysics, U of T",
+          "supervisors": "Seiji Fujimoto",
+          "pillar": "observation",
+          "focus": "Galaxy formation and AGN.",
+          "link": "#",
+          "photo": "/people/lzhang.jpg"
         }
       ]
     }
