@@ -3,10 +3,12 @@
 Runs from launchd every Monday 07:30 Toronto time. Deterministic, no LLM:
   1. read team.json and news.json from the public repo (raw.githubusercontent.com)
   2. search arXiv for member first/second-author papers and VENUS/MINERVA papers in
-     [last successful run - 35 days, today] (sweep.py, two routes)
+     [last successful run - 35 days, today] (sweep.py, two routes). Graduate students count
+     only as first author with a supervisor on the author list
   3. drop papers already listed or already judged (state.json)
   4. audit the existing cards: title vs arXiv, venue now published (arXiv journal_ref,
-     Crossref), card person is a member and author 1/2 or the survey lead, ORCIDs resolve
+     Crossref), card person is a member and author 1/2 (a student: author 1 with a supervisor
+     among the authors) or the survey lead, ORCIDs resolve
      to the member, papers judged "include" that never reached the site
   5. write candidates_latest.json and report.txt next to the state file; e-mail the owner
      (self only) when there are candidates, NEW audit findings, errors, or a crash
@@ -115,8 +117,9 @@ def acked(state, key, kind, finding):
 
 # --------------------------------------------------------------------------- audit
 
-def audit(items, members, state):
+def audit(items, members, state, students=None):
     """Findings about the existing paper cards (acknowledged ones are skipped)."""
+    students = students or {}
     findings = []
     papers = [it for it in items if it.get("type", "paper") == "paper"]
     ids = [arxiv_id(it) for it in papers]
@@ -127,7 +130,8 @@ def audit(items, members, state):
         for en in sw.parse_api(sw.get(url, log=log)):
             meta[en["arxiv"]] = en
         time.sleep(4)
-    table = sw.member_table(members)
+    table = sw.member_table(list(members) + [x for sups in students.values() for x in sups])
+    member_set = set(members)  # the table also holds supervisors who are not members
 
     def add(aid, kind, detail):
         f = {"arxiv": aid, "kind": kind, "detail": detail}
@@ -144,12 +148,16 @@ def audit(items, members, state):
             add(aid, "title", f"card: {it['title']} | arXiv: {m['title']}")
         person = it.get("person", "")
         survey_ok = it.get("survey") and SURVEY_LEAD.get(it["survey"]) == person
-        if person not in table and not survey_ok:
+        if person not in member_set and not survey_ok:
             add(aid, "not_member", f"card person {person} is not in team.json (authors 1-2: {', '.join(m['authors'][:2])})")
-        elif person in table and not survey_ok:
-            top2 = [i + 1 for i, au in enumerate(m["authors"][:2]) if sw.classify(au, person, table) in ("match", "initial")]
-            if not top2:
-                add(aid, "person", f"{person} is not author 1/2 ({', '.join(m['authors'][:2])}) and the card is not a survey card")
+        elif person in member_set and not survey_ok:
+            n = 1 if person in students else 2
+            top = [i + 1 for i, au in enumerate(m["authors"][:n]) if sw.classify(au, person, table) in ("match", "initial")]
+            if not top:
+                add(aid, "person", f"{person} is not author {'1 (students count only as first author)' if n == 1 else '1/2'}"
+                                   f" ({', '.join(m['authors'][:n])}) and the card is not a survey card")
+            elif person in students and not sw.supervisors_on_list(m["authors"], students[person], table):
+                add(aid, "person", f"{person} is a student and none of the supervisors ({', '.join(students[person])}) is on the author list")
         if not it.get("venue"):
             hint = venue_hint(m)
             if hint:
@@ -331,10 +339,21 @@ def run(args, out_dir):
     team = fetch_json(RAW + "team.json")
     news = fetch_json(RAW + "news.json")
     members = [m["name"] for t in team["tiers"] for m in t.get("members", [])]
+    pre_errors = []
+    try:
+        students = sw.student_supervisors(team)
+    except Exception as e:  # a malformed students tier must not stop the whole check
+        pre_errors.append({"stage": "students", "error": f"could not read the students tier, students skipped this week: {e}"[:300]})
+        skip = {m["name"] for t in team["tiers"] if t.get("id") == "students" for m in t.get("members", [])}
+        members = [m for m in members if m not in skip]
+        students = {}
+    for name, sups in students.items():
+        if not sups:
+            pre_errors.append({"stage": "students", "error": f"{name}: no supervisor could be read from team.json, so none of their papers can pass"})
     listed = {arxiv_id(it) for it in news["items"]}
 
-    res = sw.sweep(members, start, end, log=log)
-    errors = list(res["errors"])
+    res = sw.sweep(members, start, end, log=log, students=students)
+    errors = pre_errors + list(res["errors"])
     judged = state.get("judged", {})
     new = {}
     for member, rec in res["members"].items():
@@ -344,12 +363,20 @@ def run(args, out_dir):
             c = new.setdefault(aid, {"arxiv": aid, "title": h["title"], "v1": h.get("v1"), "category": h.get("category"),
                                      "journal_ref": h.get("journal_ref"), "doi": h.get("doi"), "flags": []})
             c["flags"].append({"member": member, "position": h["position"], "name_as_listed": h["name_as_listed"],
-                               "match": h["match"], "routes": h["routes"]})
+                               "match": h["match"], "routes": h["routes"],
+                               **({"supervisors_found": h["supervisors_found"],
+                                   "supervisor_initial_only": [x for x, k in h["supervisor_match"].items() if k == "initial"]}
+                                  if member in students else {})})
     survey = {aid: s for aid, s in res["survey"].items() if aid not in listed and aid not in judged and aid not in new}
+    skipped = {}
+    for member, rec in res["members"].items():
+        for aid, h in rec["skipped_no_supervisor"].items():
+            if aid not in listed and aid not in judged and aid not in new:
+                skipped.setdefault(aid, {"member": member, "arxiv": aid, "title": h["title"], "name_as_listed": h["name_as_listed"]})
 
     findings = []
     try:
-        findings += audit(news["items"], members, state)
+        findings += audit(news["items"], members, state, students)
     except sw.ArxivUnavailable:
         raise
     except Exception as e:
@@ -380,7 +407,9 @@ def run(args, out_dir):
     out = {"generated": dt.datetime.now().isoformat(timespec="seconds"), "window": [start, end], "manual_window": manual,
            "new_member_papers": list(new.values()), "survey_papers": list(survey.values()),
            "carried_over": [{"arxiv": aid, **p} for aid, p in carried.items()], "audit": findings, "errors": errors,
-           "counts": {m: {"api": r["api_n"], "web": r["web_n"], "hits": len(r["hits"]), "rejected_forms": r["rejected_forms"]}
+           "student_skipped": list(skipped.values()),
+           "counts": {m: {"api": r["api_n"], "web": r["web_n"], "hits": len(r["hits"]), "rejected_forms": r["rejected_forms"],
+                          **({"skipped_no_supervisor": len(r["skipped_no_supervisor"])} if m in students else {})}
                       for m, r in res["members"].items()}}
     write_json_atomic(out_dir / "candidates_latest.json", out)
     write_json_atomic(out_dir / f"candidates_{today.isoformat()}.json", out)
@@ -418,9 +447,12 @@ def run(args, out_dir):
 def render(out):
     L = [f"Aurora サイト Recent papers の週次チェック（{out['generated'][:10]}、検索窓 {out['window'][0]}〜{out['window'][1]}）", ""]
     if out["new_member_papers"]:
-        L.append(f"【新しい候補】メンバーが第1・第2著者（名前の一致のみで未検証）: {len(out['new_member_papers'])} 件")
+        L.append(f"【新しい候補】メンバーが第1・第2著者（学生は第1著者で指導教員が共著のときだけ。名前の一致のみで未検証）: {len(out['new_member_papers'])} 件")
         for c in out["new_member_papers"]:
-            fl = "; ".join(f"{f['member']} 第{f['position']}著者（{f['name_as_listed']}、{'名前一致' if f['match'] == 'match' else '頭文字のみ'}）" for f in c["flags"])
+            fl = "; ".join(f"{f['member']} 第{f['position']}著者（{f['name_as_listed']}、{'名前一致' if f['match'] == 'match' else '頭文字のみ'}"
+                           + (f"、学生・指導教員 {', '.join(x + ('（頭文字のみ）' if x in f.get('supervisor_initial_only', []) else '') for x in f['supervisors_found'])} が共著"
+                              if f.get("supervisors_found") else "") + "）"
+                           for f in c["flags"])
             L.append(f"  - arXiv:{c['arxiv']}  {c.get('v1') or ''}  {fl}\n      {c['title']}")
         L.append("")
     if out["survey_papers"]:
@@ -445,6 +477,9 @@ def render(out):
         L.append("")
     if len(L) == 2:
         L.append("新しい候補・点検項目はありません。")
+    if out.get("student_skipped"):
+        L.append(f"（参考）学生の名前が第1著者に一致したが、指導教員が著者にいないので候補にしなかったもの: {len(out['student_skipped'])} 件"
+                 "（同姓の別人がほとんど。一覧は候補ファイルの student_skipped）")
     L += ["次の一手: Claude Code のセッションで /aurora-news を実行すると、一次資料での照合からカード案の作成まで進めます（公開は push の OK 後）。",
           f"候補ファイル: {STATE_DIR}/candidates_latest.json"]
     return "\n".join(L)

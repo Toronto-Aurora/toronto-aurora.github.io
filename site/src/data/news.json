@@ -1,5 +1,5 @@
 {
-  "note": "Papers are those where an Aurora member is the first or second author, PLUS papers from Aurora-led JWST surveys (VENUS, led by S. Fujimoto; MINERVA, led by A. Muzzin), which are included regardless of author position and attributed to the survey lead. Recent items prioritize member-first-author papers. Authorship checked against the arXiv author list; 'venue' set only for papers confirmed published; dates follow the arXiv posting, or the journal publication when that is the news event. Links point to the ADS record. Do not add unverified papers, awards, figures, or venues.",
+  "note": "Papers are those where an Aurora member is the first or second author, PLUS papers from Aurora-led JWST surveys (VENUS, led by S. Fujimoto; MINERVA, led by A. Muzzin), which are included regardless of author position and attributed to the survey lead. Graduate students count only as first author, and only when one of their supervisors is also on the author list. Recent items prioritize member-first-author papers. Authorship checked against the arXiv author list; 'venue' set only for papers confirmed published; dates follow the arXiv posting, or the journal publication when that is the news event. Links point to the ADS record. Do not add unverified papers, awards, figures, or venues.",
   "items": [
     {
       "type": "paper",

@@ -2,7 +2,11 @@
 
 Stage 1 runs every Monday 07:30 (Toronto) from launchd and needs no LLM. It searches
 arXiv for papers where a member listed in `site/src/data/team.json` is first or second
-author, plus possible VENUS/MINERVA survey papers. It skips papers already in
+author, plus possible VENUS/MINERVA survey papers. Graduate students (the `students`
+tier) count only as first author, and only when one of their supervisors (the
+`supervisors` field) is also an author. Other student first-author matches are listed
+under `student_skipped` in the candidates file and do not trigger the e-mail. It skips
+papers already in
 `site/src/data/news.json` or already judged, audits the existing cards, and e-mails the
 site owner when something needs a decision. Stage 2 is the Claude Code skill
 `/aurora-news`, which verifies candidates against the papers, drafts the cards and

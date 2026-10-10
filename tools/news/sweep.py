@@ -1,5 +1,7 @@
 """Find arXiv papers where an Aurora member is first or second author, plus possible
 VENUS / MINERVA survey papers, inside a date window. Deterministic, no LLM.
+Graduate students (the "students" tier of team.json) count only as first author, and
+only when one of their supervisors is also on the author list (student_supervisors()).
 
 Two independent routes, because each one misses papers the other finds:
   A. arXiv export API by surname only. Server-side name matching is unreliable:
@@ -12,7 +14,7 @@ Two independent routes, because each one misses papers the other finds:
 Names are matched locally (classify()). A route that fails is reported in "errors";
 an empty answer is only trusted when the server says so.
 
-Library use: sweep(members, start, end) -> dict. CLI: python sweep.py START END [out.json]
+Library use: sweep(members, start, end, students=...) -> dict. CLI: python sweep.py START END [out.json]
 """
 import datetime as dt
 import html
@@ -38,10 +40,12 @@ NICKNAMES = {
     "Ue-Li Pen": ["ueli", "ue"],
     "J. Richard Bond": ["richard", "dick"],
     "Jose Maria Palencia": ["jose", "josemaria"],
+    "Lily Han Zhang": ["lily", "han"],
 }
 FIRST_INITIAL = {"J. Richard Bond": "j"}  # publishes as "J. R. Bond"
 MIDDLE = {"Ting Li": "s", "Josh Speagle": "s", "Jonah Gannon": "s", "Chloe Cheng": "m", "Gwendolyn Eadie": "m"}
-COMMON = {"Zhang", "Li", "Nguyen", "Cheng", "Martin", "Cho", "Bond", "Pen", "Fei", "Murray", "Abraham",
+COMMON = {"Zhang", "Li", "Nguyen", "Cheng", "Martin", "Cho", "Bond", "Pen", "Fei", "Murray", "Abraham", "Guo",
+          "Edward", "Myers",
           "Wang", "Chen", "Liu", "Yang", "Wu", "Huang", "Zhao", "Zhou", "Xu", "Sun", "Lin", "Kim", "Lee",
           "Park", "Smith", "Brown", "Jones", "Sato", "Suzuki", "Tanaka", "Singh", "Kumar", "Garcia", "Lopez"}
 ASTRO = "(cat:astro-ph.GA OR cat:astro-ph.CO OR cat:astro-ph.HE OR cat:astro-ph.IM OR cat:astro-ph.SR OR cat:astro-ph.EP)"
@@ -49,6 +53,7 @@ SURVEY_WORD = re.compile(r"\b(VENUS|MINERVA)\b(?!-Australis)")  # upper case onl
 # MINERVA-Australis is an exoplanet telescope. Survey papers are JWST papers, so also require JWST:
 JWST_WORD = re.compile(r"JWST|James Webb|NIRCam|NIRSpec|\bMIRI\b")
 SUFFIXES = {"jr", "sr", "ii", "iii", "iv"}
+TITLES = re.compile(r"^(prof(essor)?|dr)\.?\s+", re.I)
 DASHES = re.compile("[‐-―−]")
 MAX_ENTRIES = 5000
 
@@ -69,11 +74,43 @@ def member_table(names):
     out = {}
     for name in names:
         parts = [p for p in name.replace(".", "").split() if p.lower() not in SUFFIXES]
+        if not parts:
+            continue
         surname = parts[-1]
         given = [p for p in parts[:-1] if len(p) > 1] or parts[:-1]
         variants = NICKNAMES.get(name, [norm(given[0])[0]] if given else [""])
         out[name] = (surname, variants)
     return out
+
+
+def student_supervisors(team):
+    """{student name: [supervisor names]} from the "students" tier. The field may be a string
+    ("A and B", "A, B & C", "A; B", "A/B") or a list; titles and notes in parentheses are dropped."""
+    out = {}
+    for t in team["tiers"]:
+        if t.get("id") != "students":
+            continue
+        for m in t.get("members", []):
+            raw = m.get("supervisors") or []
+            parts = raw if isinstance(raw, list) else re.split(r",|;|/|&|\band\b", re.sub(r"\([^)]*\)", " ", raw), flags=re.I)
+            names = [TITLES.sub("", " ".join(str(x).split())) for x in parts]
+            out[m["name"]] = [x for x in names if x and not all(t in SUFFIXES for t in norm(x))]
+    return out
+
+
+def supervisor_matches(authors, supervisors, table):
+    """{supervisor: 'match' or 'initial'} for the supervisors (names in `table`) found in `authors`."""
+    out = {}
+    for s in supervisors:
+        kinds = {classify(a, s, table) for a in authors} if s in table else set()
+        if kinds & {"match", "initial"}:
+            out[s] = "match" if "match" in kinds else "initial"
+    return out
+
+
+def supervisors_on_list(authors, supervisors, table):
+    """The supervisors (names in `table`) who appear anywhere in `authors`."""
+    return list(supervisor_matches(authors, supervisors, table))
 
 
 def classify(author, member, table):
@@ -164,6 +201,16 @@ def api_query(q, log=print):
     return out
 
 
+def api_by_ids(ids, log=print):
+    """Full API records, with complete author lists, for a few arXiv ids."""
+    out = []
+    for k in range(0, len(ids), 50):
+        url = "https://export.arxiv.org/api/query?" + urllib.parse.urlencode({"id_list": ",".join(ids[k:k + 50]), "max_results": 60})
+        out += parse_api(get(url, log=log))
+        time.sleep(4)
+    return out
+
+
 def web_query(term, start_date, end_date, log=print):
     """arxiv.org advanced search. Its end date is exclusive, so one day is added."""
     end_excl = (dt.date.fromisoformat(end_date) + dt.timedelta(days=1)).isoformat()
@@ -206,18 +253,26 @@ def api_author_clause(sur):
     return f'au:"{sur}"' if "-" in sur else f"au:{sur}"
 
 
-def sweep(members, start, end, log=print):
-    """members: list of team.json names. start/end: 'YYYY-MM-DD' (both inclusive)."""
-    table = member_table(members)
+def sweep(members, start, end, log=print, students=None):
+    """members: list of team.json names. start/end: 'YYYY-MM-DD' (both inclusive).
+    students: {student: [supervisors]}. A student is checked only as first author, and a hit
+    is kept only when a supervisor is on the author list (Zhang and Guo would otherwise bring
+    in other people's papers every week); the rest go to rec["skipped_no_supervisor"]."""
+    students = students or {}
+    table = member_table(list(members) + [x for sups in students.values() for x in sups])
     win = f"submittedDate:[{start.replace('-', '')}0000 TO {end.replace('-', '')}2359]"
     res = {"window": [start, end], "members": {}, "survey": {}, "errors": []}
+    api_cache = {}  # members who share a surname send the same API query
     for member in members:
         sur = table[member][0]
-        rec = {"hits": {}, "rejected_forms": {}, "api_n": None, "web_n": None}
+        sups = students.get(member)
+        rec = {"hits": {}, "rejected_forms": {}, "skipped_no_supervisor": {}, "api_n": None, "web_n": None}
         routes = []
         try:
             q = f"{api_author_clause(sur)} AND {win}" + (f" AND {ASTRO}" if sur in COMMON else "")
-            api = api_query(q, log=log)
+            if q not in api_cache:
+                api_cache[q] = api_query(q, log=log)
+            api = api_cache[q]
             rec["api_n"] = len(api)
             routes.append(("api", api))
         except ArxivUnavailable:
@@ -236,7 +291,7 @@ def sweep(members, start, end, log=print):
             res["errors"].append({"member": member, "route": "web", "error": str(e)[:300]})
         for route, ents in routes:
             for en in ents:
-                for pos in (0, 1):
+                for pos in ((0,) if sups is not None else (0, 1)):
                     if pos >= len(en["authors"]):
                         continue
                     c = classify(en["authors"][pos], member, table)
@@ -252,8 +307,30 @@ def sweep(members, start, end, log=print):
                     for k in ("v1", "category", "journal_ref", "doi"):
                         if en.get(k):
                             h[k] = en[k]
+                    if sups is not None:  # either route's author list can show the supervisor
+                        found = h.setdefault("supervisor_match", {})
+                        for x, kind in supervisor_matches(en["authors"], sups, table).items():
+                            if found.get(x) != "match":
+                                found[x] = kind
+        if sups is not None:
+            # the arXiv search page can cut long author lists, so re-read web-only hits from the API
+            recheck = [a for a, h in rec["hits"].items() if not h["supervisor_match"] and "api" not in h["routes"]]
+            if recheck:
+                try:
+                    for en in api_by_ids(recheck, log=log):
+                        if en["arxiv"] in rec["hits"]:
+                            rec["hits"][en["arxiv"]]["supervisor_match"] = supervisor_matches(en["authors"], sups, table)
+                except ArxivUnavailable:
+                    raise
+                except Exception as e:
+                    res["errors"].append({"member": member, "route": "api-ids", "error": str(e)[:300]})
+            for aid in [a for a, h in rec["hits"].items() if not h["supervisor_match"]]:
+                rec["skipped_no_supervisor"][aid] = rec["hits"].pop(aid)
+            for h in rec["hits"].values():
+                h["supervisors_found"] = list(h["supervisor_match"])
         res["members"][member] = rec
-        log(f"{member:26s} api={rec['api_n']} web={rec['web_n']} hits={len(rec['hits'])} rejected_forms={len(rec['rejected_forms'])}")
+        log(f"{member:26s} api={rec['api_n']} web={rec['web_n']} hits={len(rec['hits'])} rejected_forms={len(rec['rejected_forms'])}"
+            + (f" skipped_no_supervisor={len(rec['skipped_no_supervisor'])}" if sups is not None else ""))
     for q in (f"abs:VENUS AND {win}", f"ti:VENUS AND {win}", f"abs:MINERVA AND {win}", f"ti:MINERVA AND {win}"):
         try:
             for en in api_query(q, log=log):
@@ -272,6 +349,6 @@ if __name__ == "__main__":
     team = json.load(urllib.request.urlopen(urllib.request.Request(
         "https://raw.githubusercontent.com/Toronto-Aurora/toronto-aurora.github.io/main/site/src/data/team.json", headers=UA), timeout=60))
     names = [m["name"] for t in team["tiers"] for m in t.get("members", [])]
-    out = sweep(names, sys.argv[1], sys.argv[2])
+    out = sweep(names, sys.argv[1], sys.argv[2], students=student_supervisors(team))
     if len(sys.argv) > 3:
         json.dump(out, open(sys.argv[3], "w"), indent=1, ensure_ascii=False)
