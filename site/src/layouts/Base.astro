@@ -15,7 +15,7 @@ const ogImage = new URL('/og-image.png', Astro.site);
   <head>
     <meta charset="utf-8" />
     <!-- The initiative moved to toronto-northernlight.github.io (2026-10-11); forward every path. -->
-    <script>location.replace('https://toronto-northernlight.github.io' + location.pathname + location.search + location.hash);</script>
+    <script is:inline>location.replace('https://toronto-northernlight.github.io' + location.pathname + location.search + location.hash);</script>
     <meta http-equiv="refresh" content="0; url=https://toronto-northernlight.github.io/" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
